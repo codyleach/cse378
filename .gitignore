@@ -4,4 +4,3 @@ gen/*
 .DS_Store
 .classpath
 .gitignore_global
-.project

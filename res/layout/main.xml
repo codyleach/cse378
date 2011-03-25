@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
 	<LinearLayout
-		android:background="@drawable/background"
+		
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
@@ -15,5 +16,21 @@
 			android:background="@drawable/logo"
 			android:layout_width="match_parent" 
 			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
+		
 	</LinearLayout>
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:text="I'm a consumer" 
+		android:gravity="left" />
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:text="I'm a producer" 
+		android:gravity="left" />
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:text="I'm a market coordinator" 
+		android:gravity="left" />
 </LinearLayout>

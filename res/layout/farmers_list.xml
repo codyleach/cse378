@@ -27,14 +27,14 @@
 		android:layout_marginRight="10px"
 		/>
 	<Button
-		android:layout_height="30px"
+		android:layout_height="wrap_content"
 		android:layout_width="75px"
 		android:text="Search" 
 		android:layout_gravity="center_horizontal"
 		android:layout_marginBottom="130px" />
 		
 	<ListView 
-		android:id="@+id/listView1"
+		android:id="@+id/listView"
 		android:layout_height="wrap_content" 
 		android:layout_width="match_parent">
 	</ListView>

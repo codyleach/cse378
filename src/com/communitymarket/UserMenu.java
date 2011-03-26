@@ -13,7 +13,7 @@ public class UserMenu extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);
+       
         
         // Get the type of user
         userType = (UserType) getIntent().getExtras().getSerializable("usertype");

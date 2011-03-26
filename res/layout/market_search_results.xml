@@ -14,16 +14,9 @@
 		android:layout_marginTop="15px"
 		android:layout_marginBottom="20px"
 		/>
-	<EditText
-		android:layout_gravity="center_horizontal"
-		android:text="Enter ZIP or State . . . "
-		android:textColor="#111"
-		android:editable="true"
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_marginBottom="10px"
-		android:layout_marginLeft="10px"
-		android:layout_marginRight="10px"
+	<ImageView
+		android:layout_gravity="center"
+		
 		/>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/getInfo"

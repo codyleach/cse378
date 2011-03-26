@@ -17,7 +17,7 @@
 	
 	<EditText
 		android:layout_gravity="center_horizontal"
-		android:text="Enter ZIP or State . . . "
+		android:hint="Enter ZIP or State . . . "
 		android:textColor="#111"
 		android:editable="true"
 		android:layout_width="match_parent" 

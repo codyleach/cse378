@@ -7,7 +7,7 @@
     
     <TextView
 		android:layout_gravity="center_horizontal"
-		android:text="Find Markets"
+		android:text="Find Farmer"
 		android:textColor="#fff"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
 	
 	<EditText
 		android:layout_gravity="center_horizontal"
-		android:text="Enter ZIP or State . . . "
+		android:hint="Enter Name"
 		android:textColor="#111"
 		android:editable="true"
 		android:layout_width="match_parent" 
@@ -32,4 +32,11 @@
 		android:text="Search" 
 		android:layout_gravity="center_horizontal"
 		android:layout_marginBottom="130px" />
+		
+	<ListView 
+		android:id="@+id/listView1"
+		android:layout_height="wrap_content" 
+		android:layout_width="match_parent">
+	</ListView>
 </LinearLayout>
+

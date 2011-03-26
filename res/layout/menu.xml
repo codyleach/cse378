@@ -22,4 +22,8 @@
   	android:id="@+id/recipes_button"
   	android:text="@string/recipes"
   	style="@style/MenuButtonItem" />
+  <com.communitymarket.MenuButtonItem
+  	android:id="@+id/manage_button"
+  	android:text="@string/manage_markets"
+  	style="@style/MenuButtonItem" />
 </LinearLayout>

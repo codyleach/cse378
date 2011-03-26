@@ -5,23 +5,37 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background_gradient">
 	<LinearLayout
-		android:orientation="horizontal"
+		android:orientation="vertical"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
+		android:layout_height="wrap_content"
 		android:layout_weight="1">
-		<TextView
-			android:gravity="center_horizontal"
-			android:layout_weight="1"
-			android:background="@drawable/logo"
-			android:layout_width="match_parent" 
-			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
+		<ImageView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			android:layout_marginTop="15dip"
+			android:src="@drawable/logo" />
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:layout_gravity="center"
+			android:src="@drawable/veggies" />
+<!--		<TextView-->
+<!--			android:gravity="center_horizontal"-->
+<!--			android:layout_weight="1"-->
+<!--			android:background="@drawable/logo"-->
+<!--			android:layout_width="match_parent"-->
+<!--			android:layout_height="35px" -->
+<!--			android:layout_marginLeft="20px" -->
+<!--			android:layout_marginRight="20px" -->
+<!--			android:layout_marginTop="15px"/>	-->
+<!--		<TextView-->
+<!--			android:layout_gravity="center"-->
+<!--			android:layout_width="150px"-->
+<!--			android:layout_height="170px"-->
+<!--			android:background="@drawable/veggies"/>-->
 	</LinearLayout>
-	<TextView
-			android:layout_gravity="center_horizontal"
-			android:layout_width="150px"
-			android:layout_height="170px"
-			android:background="@drawable/veggies" 
-			/>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/consumer"
 	  	android:text="I'm a consumer"

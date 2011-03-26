@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, home!</string>
     <string name="app_name">Community Market</string>
-    <string-array name="user_menu_array">
-    	<item>Markets</item>
-    	<item>Products</item>
-    	<item>Markets</item>
-    	<item>Recipes</item>
-    </string-array>
+    <string name="markets">Markets</string>
+    <string name="farmers">Farmers</string>
+    <string name="products">Products</string>
+    <string name="recipes">Recipes</string>
+    <string name="manage_markets">Manage Markets</string>
+    <string name="back">Back</string>
+    <string name="home">Home</string>
 </resources>

@@ -6,16 +6,19 @@
   android:layout_height="fill_parent"
   android:orientation="vertical">
   <com.communitymarket.MenuButtonItem
-  	android:id="@+id/mainbutton"
-  	android:text="I am a consumer"
+  	android:id="@+id/markets_button"
+  	android:text="@string/markets"
   	style="@style/MenuButtonItem" />
   <com.communitymarket.MenuButtonItem
-  	android:id="@+id/mainbutton2"
-  	android:text="I am a farmer"
+  	android:id="@+id/products_button"
+  	android:text="@string/products"
   	style="@style/MenuButtonItem" />
-    <ListView 
-    	android:id="@+id/menu_listview"
-    	android:layout_gravity="bottom"
-    	android:layout_height="wrap_content" 
-    	android:layout_width="fill_parent" />
+  <com.communitymarket.MenuButtonItem
+  	android:id="@+id/farmers_button"
+  	android:text="@string/farmers"
+  	style="@style/MenuButtonItem" />
+  <com.communitymarket.MenuButtonItem
+  	android:id="@+id/recipes_button"
+  	android:text="@string/recipes"
+  	style="@style/MenuButtonItem" />
 </LinearLayout>

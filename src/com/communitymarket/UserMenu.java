@@ -13,10 +13,5 @@ public class UserMenu extends Activity {
         setContentView(R.layout.menu);
         
         // Get the menu items
-        String[] items = getResources().getStringArray(R.array.user_menu_array);
-        
-        // Set the list
-        ListView lv = (ListView) findViewById(R.id.menu_listview);
-        lv.setAdapter(new ArrayAdapter<String>(this, R.layout.menu_item, items));
     }
 }

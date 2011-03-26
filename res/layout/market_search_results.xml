@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+	
+	<TextView
+		android:layout_gravity="center_horizontal"
+		android:text="Lincoln, NE, 68508"
+		android:textColor="#fff"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15px"
+		android:layout_marginBottom="20px"
+		/>
+	<EditText
+		android:layout_gravity="center_horizontal"
+		android:text="Enter ZIP or State . . . "
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="10px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
+		/>
+	<com.communitymarket.MenuButtonItem
+	  	android:id="@+id/getInfo"
+	  	android:text="Get Information"
+	  	style="@style/MenuButtonItem"
+	  	/>
+  	<com.communitymarket.MenuButtonItem
+	  	android:id="@+id/drivingDirections"
+	  	android:text="Driving Directions"
+	  	style="@style/MenuButtonItem"
+	  	/>
+	
+		 
+</LinearLayout>

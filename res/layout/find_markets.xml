@@ -5,24 +5,32 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background">
 	
-		<TextView
-			android:gravity="center_horizontal"
-			android:layout_weight="1"
-			android:text="Find Markets"
-			android:layout_width="match_parent" 
-			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
-		
 	<TextView
-		android:gravity="left"
-			android:text="Fs"
-			android:textColor="#111"
-			android:editable="true"
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" />
-	<Button
+		android:layout_gravity="center_horizontal"
+		android:text="Find Markets"
+		android:textColor="#fff"
+		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
+		android:layout_marginTop="15px"
+		android:layout_marginBottom="20px"
+		android:textSize="20px"/>
+	
+	<EditText
+		android:layout_gravity="center_horizontal"
+		android:text="Enter ZIP or State . . . "
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="10px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
+		/>
+	<Button
+		android:layout_height="30px"
+		android:layout_width="75px"
 		android:text="Search" 
-		android:layout_gravity="center_horizontal" />
+		android:layout_gravity="center_horizontal"
+		android:layout_marginBottom="130px" />
 		 
 </LinearLayout>

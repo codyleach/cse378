@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MenuButtonItem extends Button {
 
-	public static int ARROW_HEIGHT	= 10;
+	public static int ARROW_HEIGHT	= 8;
 	public static int ARROW_WIDTH  	= 8;
 	public static int STROKE_WIDTH 	= 3;
 	public static int RIGHT_PADDING = 5;

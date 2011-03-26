@@ -18,19 +18,20 @@
 			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
 		
 	</LinearLayout>
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:text="I'm a consumer" 
-		android:gravity="left" />
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:text="I'm a producer" 
-		android:gravity="left" />
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:text="I'm a market coordinator" 
-		android:gravity="left" />
+	<com.communitymarket.MenuButtonItem
+	  	android:id="@+id/consumer"
+	  	android:text="I'm a consumer"
+	  	style="@style/MenuButtonItem"
+	  	/>
+  	<com.communitymarket.MenuButtonItem
+	  	android:id="@+id/producer"
+	  	android:text="I'm a producer"
+	  	style="@style/MenuButtonItem"
+	  	/>
+	<com.communitymarket.MenuButtonItem
+	  	android:id="@+id/marketCoordinator"
+	  	android:text="I'm a market coordinator"
+	  	style="@style/MenuButtonItem"
+	  	/>
+	
 </LinearLayout>

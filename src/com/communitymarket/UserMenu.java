@@ -7,15 +7,18 @@ import android.view.View;
 import android.widget.Button;
 
 public class UserMenu extends Activity {
+	private UserType userType;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         
-        // Get the menu items
+        // Get the type of user
+        userType = (UserType) getIntent().getExtras().getSerializable("usertype");
         
-      //Producer Button
+        // Producer Button
         final Button farmersButton = (Button) findViewById(R.id.farmers_button);
         farmersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

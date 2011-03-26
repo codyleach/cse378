@@ -21,36 +21,18 @@
 			android:layout_height="fill_parent"
 			android:layout_gravity="center"
 			android:src="@drawable/veggies" />
-<!--		<TextView-->
-<!--			android:gravity="center_horizontal"-->
-<!--			android:layout_weight="1"-->
-<!--			android:background="@drawable/logo"-->
-<!--			android:layout_width="match_parent"-->
-<!--			android:layout_height="35px" -->
-<!--			android:layout_marginLeft="20px" -->
-<!--			android:layout_marginRight="20px" -->
-<!--			android:layout_marginTop="15px"/>	-->
-<!--		<TextView-->
-<!--			android:layout_gravity="center"-->
-<!--			android:layout_width="150px"-->
-<!--			android:layout_height="170px"-->
-<!--			android:background="@drawable/veggies"/>-->
 	</LinearLayout>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/consumer"
 	  	android:text="I'm a consumer"
 	  	style="@style/MenuButtonItem"
-	  	android:layout_marginTop="30px"
-	  	/>
+	  	android:layout_marginTop="30px" />
   	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/producer"
 	  	android:text="I'm a producer"
-	  	style="@style/MenuButtonItem"
-	  	/>
+	  	style="@style/MenuButtonItem" />
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/marketCoordinator"
 	  	android:text="I'm a market coordinator"
-	  	style="@style/MenuButtonItem"
-	  	/>
-	
+	  	style="@style/MenuButtonItem" />
 </LinearLayout>

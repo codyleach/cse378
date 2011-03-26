@@ -19,6 +19,7 @@ public class home extends Activity {
             public void onClick(View v) {
                 // Perform action on click
             	Intent intent = new Intent(home.this, UserMenu.class);
+            	intent.putExtra("usertype", UserType.Consumer);
 				startActivityForResult(intent, 0);
             	
             }
@@ -30,6 +31,7 @@ public class home extends Activity {
             public void onClick(View v) {
                 // Perform action on click
             	Intent intent = new Intent(home.this, UserMenu.class);
+            	intent.putExtra("usertype", UserType.Producer);
 				startActivityForResult(intent, 0);
             	
             }
@@ -41,6 +43,7 @@ public class home extends Activity {
             public void onClick(View v) {
                 // Perform action on click
             	Intent intent = new Intent(home.this, UserMenu.class);
+            	intent.putExtra("usertype", UserType.Coordinator);
 				startActivityForResult(intent, 0);
             	
             }

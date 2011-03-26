@@ -3,9 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background_gradient">
 	<LinearLayout
-		
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
@@ -16,7 +15,6 @@
 			android:background="@drawable/logo"
 			android:layout_width="match_parent" 
 			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
-		
 	</LinearLayout>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/consumer"

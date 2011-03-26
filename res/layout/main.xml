@@ -16,10 +16,17 @@
 			android:layout_width="match_parent" 
 			android:layout_marginLeft="20px" android:layout_marginRight="20px" android:layout_height="35px" android:layout_marginTop="15px"/>	
 	</LinearLayout>
+	<TextView
+			android:layout_gravity="center_horizontal"
+			android:layout_width="150px"
+			android:layout_height="170px"
+			android:background="@drawable/veggies" 
+			/>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/consumer"
 	  	android:text="I'm a consumer"
 	  	style="@style/MenuButtonItem"
+	  	android:layout_marginTop="30px"
 	  	/>
   	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/producer"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/com.communitymarket"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+  <com.communitymarket.MenuButtonItem
+  	android:id="@+id/mainbutton"
+  	android:text="I am a consumer"
+  	style="@style/MenuButtonItem" />
+  <com.communitymarket.MenuButtonItem
+  	android:id="@+id/mainbutton2"
+  	android:text="I am a farmer"
+  	style="@style/MenuButtonItem" />
+    <ListView 
+    	android:id="@+id/menu_listview"
+    	android:layout_gravity="bottom"
+    	android:layout_height="wrap_content" 
+    	android:layout_width="fill_parent" />
+</LinearLayout>

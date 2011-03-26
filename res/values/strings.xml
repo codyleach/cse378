@@ -2,4 +2,10 @@
 <resources>
     <string name="hello">Hello World, home!</string>
     <string name="app_name">Community Market</string>
+    <string-array name="user_menu_array">
+    	<item>Markets</item>
+    	<item>Products</item>
+    	<item>Markets</item>
+    	<item>Recipes</item>
+    </string-array>
 </resources>

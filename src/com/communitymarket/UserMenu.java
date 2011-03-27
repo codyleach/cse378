@@ -18,6 +18,7 @@ public class UserMenu extends Activity {
         // Get the type of user
         userType = (UserType) getIntent().getExtras().getSerializable("usertype");
         
+        
         // Producer Button
         final Button farmersButton = (Button) findViewById(R.id.farmers_button);
         farmersButton.setOnClickListener(new View.OnClickListener() {

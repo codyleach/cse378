@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 public class findMarkets extends Activity {
 	
@@ -26,5 +29,26 @@ public class findMarkets extends Activity {
             }
         });
         
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.go_home:
+            Intent intent = new Intent(findMarkets.this, UserMenu.class);
+            intent.putExtra("usertype", UserType.Consumer);
+            startActivityForResult(intent, 0);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

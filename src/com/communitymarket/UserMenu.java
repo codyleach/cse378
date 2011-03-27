@@ -44,6 +44,42 @@ public class UserMenu extends Activity {
             });
         }
         
+     // Products Button
+        final Button productsButton = (Button) findViewById(R.id.products_button);
+        if (productsButton != null) {
+        	productsButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(UserMenu.this, findProducts.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
+        
+     // Recipes Button
+        final Button recipesButton = (Button) findViewById(R.id.recipes_button);
+        if (recipesButton != null) {
+        	recipesButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(UserMenu.this, findRecipes.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
+        
+     // Different User Button
+        final Button differentUserButton = (Button) findViewById(R.id.different_user_button);
+        if (differentUserButton != null) {
+        	differentUserButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(UserMenu.this, home.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
+        
         
     }
 }

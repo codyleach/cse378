@@ -30,5 +30,9 @@
         		  android:label="@string/app_name"
         		  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+        <activity android:name=".marketInformation"
+        		  android:label="@string/app_name"
+        		  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
     </application>
 </manifest>

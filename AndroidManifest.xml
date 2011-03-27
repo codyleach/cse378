@@ -26,6 +26,14 @@
         		  android:label="@string/app_name"
         		  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+        <activity android:name=".findProducts"
+        		  android:label="@string/app_name"
+        		  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".findRecipes"
+        		  android:label="@string/app_name"
+        		  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
         <activity android:name=".marketSearchResults"
         		  android:label="@string/app_name"
         		  android:theme="@android:style/Theme.NoTitleBar">

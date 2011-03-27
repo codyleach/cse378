@@ -18,6 +18,20 @@ public class UserMenu extends Activity {
         // Get the type of user
         //userType = (UserType) getIntent().getExtras().getSerializable("usertype");
         
+     
+        
+      /// Markets Button
+        final Button marketsButton = (Button) findViewById(R.id.markets_button);
+        if (marketsButton != null) {
+        	marketsButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(UserMenu.this, findMarkets.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
+        
         // Producer Button
         final Button farmersButton = (Button) findViewById(R.id.farmers_button);
         if (farmersButton != null) {
@@ -29,5 +43,7 @@ public class UserMenu extends Activity {
                 }
             });
         }
+        
+        
     }
 }

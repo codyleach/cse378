@@ -9,7 +9,8 @@
   <com.communitymarket.MenuButtonItem
   	android:id="@+id/markets_button"
   	android:text="@string/markets"
-  	style="@style/MenuButtonItem" />
+  	style="@style/MenuButtonItem" 
+  	android:layout_marginTop="10dip"/>
   <com.communitymarket.MenuButtonItem
   	android:id="@+id/products_button"
   	android:text="@string/products"

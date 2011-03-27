@@ -94,28 +94,28 @@
 		/>
 	</LinearLayout>
 	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/producer"
+	  	android:id="@+id/subscribe_button"
 	  	android:text="Subscribe to Notifications"
 	  	style="@style/MenuButtonItem" 
 	  	android:layout_marginTop="30dip"
   	/>
   	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/producer"
+	  	android:id="@+id/view_products_button"
 	  	android:text="View Products"
 	  	style="@style/MenuButtonItem" 
   	/>
   	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/producer"
+	  	android:id="@+id/view_producers_button"
 	  	android:text="View Producers"
 	  	style="@style/MenuButtonItem" 
   	/>
   	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/producer"
+	  	android:id="@+id/view_vendor_map_button"
 	  	android:text="Vendor Map"
 	  	style="@style/MenuButtonItem" 
   	/>
   	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/producer"
+	  	android:id="@+id/view_driving_directions_button"
 	  	android:text="Driving Directions"
 	  	style="@style/MenuButtonItem" 
   	/>

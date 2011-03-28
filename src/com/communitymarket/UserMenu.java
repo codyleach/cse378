@@ -41,6 +41,7 @@ public class UserMenu extends Activity {
             });
         }
         
+        
         // Producer Button
         final Button farmersButton = (Button) findViewById(R.id.farmers_button);
         if (farmersButton != null) {

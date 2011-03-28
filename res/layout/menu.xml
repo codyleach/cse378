@@ -6,6 +6,9 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   android:background="@drawable/background_gradient">
+  <include layout="@layout/header"
+  	android:layout_height="wrap_content"
+  	android:layout_width="fill_parent" />
   <com.communitymarket.MenuButtonItem
   	android:id="@+id/markets_button"
   	android:text="@string/markets"

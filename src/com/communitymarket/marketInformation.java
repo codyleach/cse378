@@ -1,0 +1,81 @@
+package com.communitymarket;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
+
+public class marketInformation extends Activity {
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.market_info_page); 
+
+		//Subscribe Button
+		final Button subscribeButton = (Button) findViewById(R.id.subscribe_button);
+		subscribeButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// Perform action on click
+
+				AlertDialog.Builder alert = new AlertDialog.Builder(marketInformation.this);
+
+				alert.setMessage("You've been subscribed to notifications for this market.");
+				alert.setIcon(R.drawable.icon);
+				alert.setPositiveButton("Okay",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.dismiss();
+					}
+				});
+				alert.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.dismiss();
+
+					}
+				});
+
+				alert.show();
+
+			}
+		});
+
+
+
+	}
+
+
+
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.option_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.go_home:
+			Intent intent = new Intent(marketInformation.this, UserMenu.class);
+			intent.putExtra("usertype", UserType.Consumer);
+			startActivityForResult(intent, 0);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+}

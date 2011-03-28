@@ -7,7 +7,7 @@
 	
 	<TextView
 		android:layout_gravity="center_horizontal"
-		android:text="Find Markets"
+		android:text="Recipes"
 		android:textColor="#fff"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
 	
 	<EditText
 		android:layout_gravity="center_horizontal"
-		android:hint="Enter ZIP or State"
+		android:hint="Enter ingredient"
 		android:textColor="#111"
 		android:editable="true"
 		android:layout_width="match_parent" 

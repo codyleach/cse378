@@ -6,28 +6,43 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   android:background="@drawable/background_gradient">
-  <include layout="@layout/header"
-  	android:layout_height="wrap_content"
-  	android:layout_width="fill_parent" />
-  <com.communitymarket.MenuButtonItem
-  	android:id="@+id/markets_button"
-  	android:text="@string/markets"
-  	style="@style/MenuButtonItem" />
-  <com.communitymarket.MenuButtonItem
-  	android:id="@+id/products_button"
-  	android:text="@string/products"
-  	style="@style/MenuButtonItem" />
-  <com.communitymarket.MenuButtonItem
-  	android:id="@+id/farmers_button"
-  	android:text="@string/farmers"
-  	style="@style/MenuButtonItem" />
-  <com.communitymarket.MenuButtonItem
-  	android:id="@+id/recipes_button"
-  	android:text="@string/recipes"
-  	style="@style/MenuButtonItem" />
-  <com.communitymarket.MenuButtonItem
-  	android:id="@+id/manage_button"
-  	android:text="@string/manage_markets"
-  	style="@style/MenuButtonItem"
-  	android:visibility="gone" />
+	<include layout="@layout/header"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="fill_parent" />
+	<LinearLayout
+	  	android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+	  <com.communitymarket.MenuButtonItem
+	  	android:id="@+id/markets_button"
+	  	android:text="@string/markets"
+	  	style="@style/MenuButtonItem" 
+	  	android:layout_marginTop="10dip"/>
+	  <com.communitymarket.MenuButtonItem
+	  	android:id="@+id/products_button"
+	  	android:text="@string/products"
+	  	style="@style/MenuButtonItem" />
+	  <com.communitymarket.MenuButtonItem
+	  	android:id="@+id/farmers_button"
+	  	android:text="@string/farmers"
+	  	style="@style/MenuButtonItem" />
+	  <com.communitymarket.MenuButtonItem
+	  	android:id="@+id/recipes_button"
+	  	android:text="@string/recipes"
+	  	style="@style/MenuButtonItem" />
+	  <com.communitymarket.MenuButtonItem
+	  	android:id="@+id/manage_button"
+	  	android:text="@string/manage_markets"
+	  	style="@style/MenuButtonItem"
+	  	android:visibility="gone" />
+	</LinearLayout>
+	<Button
+	  	android:id="@+id/different_user_button"
+	  	android:text="Select a different user"
+	  	android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:layout_marginLeft="5dip"
+	  	android:layout_marginRight="5dip"
+	  	android:gravity="center_vertical" />
 </LinearLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background_gradient"
+  android:orientation="vertical">
+  <include layout="@layout/header"
+  	android:layout_height="wrap_content"
+  	android:layout_width="fill_parent" />
+  <LinearLayout
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:orientation="horizontal"
+	android:layout_marginTop="15dip"
+	android:layout_marginLeft="10dip">
+  		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/liz_lemon" />
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_marginLeft="10dip">
+				<TextView
+					android:id="@+id/farmer_name"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:textColor="#FF405270"
+					android:textSize="25px"
+					android:text="Liz Lemon" />
+				<RatingBar
+					android:id="@+id/farmer_rating"
+					android:layout_width="fill_parent"
+					android:layout_height="40dip"
+					android:numStars="5"
+					android:stepSize="1.0"
+					android:minHeight="40dip"
+					android:maxHeight="40dip" />
+		</LinearLayout>
+  	</LinearLayout>
+  	<LinearLayout
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:orientation="vertical"
+  		android:layout_marginLeft="10dip"
+  		android:layout_marginRight="10dip"
+  		android:layout_marginTop="10dip">
+	  		<TextView
+				android:id="@+id/product_label"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textColor="#FFF"
+				android:textSize="18px"
+				android:shadowColor="#FF6D6D6D"
+				android:shadowDx="1"
+				android:shadowDy="1"
+				android:shadowRadius="1"
+				android:text="Products Liz Lemon Sells" />
+			<TableLayout
+				android:layout_width="fill_parent"
+				android:layout_height="3dip"
+				android:background="#FF406096" />
+			<TextView
+				android:id="@+id/product_label"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5dip"
+				android:layout_marginLeft="5dip"
+				android:layout_marginRight="5dip"
+				android:textColor="#FF405270"
+				android:text="Lemons, carrots, and green beans" />
+  	</LinearLayout>
+  	<LinearLayout
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:orientation="vertical"
+  		android:layout_marginLeft="10dip"
+  		android:layout_marginRight="10dip"
+  		android:layout_marginTop="10dip">
+	  		<TextView
+				android:id="@+id/comment_label"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textColor="#FFF"
+				android:textSize="18px"
+				android:shadowColor="#FF6D6D6D"
+				android:shadowDx="1"
+				android:shadowDy="1"
+				android:shadowRadius="1"
+				android:text="Customer Comments" />
+			<TableLayout
+				android:layout_width="fill_parent"
+				android:layout_height="3dip"
+				android:background="#FF406096" />
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="5dip"
+				android:layout_marginRight="5dip"
+				android:layout_marginTop="5dip"
+				android:background="#22000000">
+					<TextView
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="14px"
+						android:text="&quot;Your carrots are so great!!&quot;" />
+					<TextView
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="10dip"
+						android:layout_marginRight="10dip"
+						android:textColor="#eee"
+						android:textSize="11px"
+						android:text="by Jack Donaghy at 7:37pm" />
+			</LinearLayout>
+  	</LinearLayout>
+</LinearLayout>

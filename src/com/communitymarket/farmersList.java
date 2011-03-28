@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class farmersList extends Activity {
 	
@@ -13,9 +15,19 @@ public class farmersList extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.farmers_list); 
+        setContentView(R.layout.farmers_list);
         
-        
+        // Search Button
+        Button searchButton = (Button) findViewById(R.id.search_farmers_button);
+        if (searchButton != null) {
+        	searchButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(farmersList.this, Farmer.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
     }
     
     @Override

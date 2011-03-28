@@ -27,6 +27,7 @@
 		android:layout_marginRight="10px"
 		/>
 	<Button
+		android:id="@+id/search_farmers_button"
 		android:layout_height="wrap_content"
 		android:layout_width="75px"
 		android:text="Search" 

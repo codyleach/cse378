@@ -14,6 +14,7 @@
 		android:layout_marginTop="15px"
 		android:layout_marginBottom="10px"
 		android:textSize="18px"
+		android:textStyle="bold"
 	/>
 	<LinearLayout
 		android:layout_width="fill_parent"
@@ -27,7 +28,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:textStyle="bold"
 			android:text="Address:"
 		/>
@@ -37,7 +38,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:text="8th and P Street\nLincoln, NE 68508"
 		/>
 	</LinearLayout>
@@ -53,7 +54,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:textStyle="bold"
 			android:text="Phone:"
 		/>
@@ -63,7 +64,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:text="(402) 555-5555"
 		/>
 	</LinearLayout>
@@ -79,7 +80,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:textStyle="bold"
 			android:text="Dates:"
 		/>
@@ -89,7 +90,7 @@
 			android:layout_height="wrap_content"
 			android:padding="5dip"
 			android:textColor="#fff"
-			android:textSize="12px"
+			android:textSize="14px"
 			android:text="Saturdays 8 A.M. - 12 noon\nMay - October"
 		/>
 	</LinearLayout>

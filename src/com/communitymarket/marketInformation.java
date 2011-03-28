@@ -48,6 +48,18 @@ public class marketInformation extends Activity {
 
 			}
 		});
+		
+		//Driving Directions Button
+        final Button drivingDirectionsButton = (Button) findViewById(R.id.view_driving_directions_button);
+        drivingDirectionsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	Intent intent = new Intent(marketInformation.this, drivingDirections.class);
+            	intent.putExtra("usertype", UserType.Consumer);
+				startActivityForResult(intent, 0);
+            	
+            }
+        });
 
 
 

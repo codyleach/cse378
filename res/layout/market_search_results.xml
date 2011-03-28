@@ -9,7 +9,8 @@
 		android:layout_gravity="center_horizontal"
 		android:text="Lincoln, NE, 68508"
 		android:textColor="#fff"
-		android:textSize="16px"
+		android:textSize="18px"
+		android:textStyle="bold"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
 		android:layout_marginTop="15px"
@@ -24,16 +25,14 @@
 		android:id="@+id/imageView1"
 		android:layout_marginLeft="15dip"/>
 	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/getInfo"
+	  	android:id="@+id/getInfoButton"
 	  	android:text="Get Information"
 	  	style="@style/MenuButtonItem"
 	  	android:layout_marginTop="15dip"
 	  	/>
   	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/drivingDirections"
+	  	android:id="@+id/drivingDirectionsButton"
 	  	android:text="Driving Directions"
 	  	style="@style/MenuButtonItem"
 	  	/>
-	
-		 
 </LinearLayout>

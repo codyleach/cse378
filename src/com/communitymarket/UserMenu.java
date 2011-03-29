@@ -78,6 +78,18 @@ public class UserMenu extends Activity {
             });
         }
         
+        // Manage Markets Button
+        final Button manageButton = (Button) findViewById(R.id.manage_button);
+        if (manageButton != null) {
+        	manageButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                	Intent intent = new Intent(UserMenu.this, ManageMarkets.class);
+    				startActivityForResult(intent, 0);
+                }
+            });
+        }
+        
      // Different User Button
         final Button differentUserButton = (Button) findViewById(R.id.different_user_button);
         if (differentUserButton != null) {

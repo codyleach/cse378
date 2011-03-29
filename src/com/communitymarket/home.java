@@ -59,12 +59,11 @@ public class home extends Activity {
                 
                 
                 // create a 100px width and 200px height popup window
-                pw = new PopupWindow(layout, 300, 300, true);
+                pw = new PopupWindow(layout, 375, 425, true);
                 // set actions to buttons we have in our popup
                 Button button1 = (Button)layout.findViewById(R.id.popup_menu_button1);
                 button1.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View vv) {
+                    public void onClick(View v) {
                         // close the popup
                         pw.dismiss();
                     }
@@ -72,8 +71,7 @@ public class home extends Activity {
             
                 Button button3 = (Button)layout.findViewById(R.id.popup_menu_button3);
                 button3.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View vv) {
+                    public void onClick(View v) {
                     	// Perform action on click
                     	 pw.dismiss();
                     	Intent intent = new Intent(home.this, UserMenu.class);
@@ -85,8 +83,7 @@ public class home extends Activity {
                 
                 Button button2 = (Button)layout.findViewById(R.id.popup_menu_button2);
                 button2.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View vv) {
+                    public void onClick(View v) {
                     	// Perform action on click
                     	 pw.dismiss();
                     	Intent intent = new Intent(home.this, UserRegistration.class);

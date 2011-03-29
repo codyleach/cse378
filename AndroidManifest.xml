@@ -5,8 +5,8 @@
       android:versionName="1.0">
 	
 	<uses-sdk
-		android:minSdkVersion="4"
-		android:targetSdkVersion="4"
+		android:minSdkVersion="8"
+		android:targetSdkVersion="8"
 		android:maxSdkVersion="8" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
@@ -63,6 +63,14 @@
         		  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".UserRegistration"
+        		  android:label="@string/app_name"
+        		  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".ManageMarkets"
+        		  android:label="@string/app_name"
+        		  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".AddNewMarket"
         		  android:label="@string/app_name"
         		  android:theme="@android:style/Theme.NoTitleBar">
         </activity>

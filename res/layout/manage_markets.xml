@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="@drawable/background_gradient">
+	<include layout="@layout/header"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="fill_parent" />
+  	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textColor="#FFF"
+		android:textSize="35px"
+		android:shadowColor="#FF6D6D6D"
+		android:shadowDx="1"
+		android:shadowDy="1"
+		android:shadowRadius="1"
+		android:text="Your Markets"
+		android:layout_gravity="center_horizontal" />
+	<LinearLayout
+	  	android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<com.communitymarket.MenuButtonItem
+		  	android:id="@+id/haymarket_button"
+		  	android:text="Lincoln Haymarket"
+		  	style="@style/MenuButtonItem" 
+		  	android:layout_marginTop="10dip"/>
+		<com.communitymarket.MenuButtonItem
+		  	android:id="@+id/omaha_button"
+		  	android:text="Omaha Market"
+		  	style="@style/MenuButtonItem" 
+		  	android:layout_marginTop="10dip"/>
+		<com.communitymarket.MenuButtonItem
+		  	android:id="@+id/recently_added_button"
+		  	style="@style/MenuButtonItem" 
+		  	android:layout_marginTop="10dip"
+		  	android:visibility="gone"/>
+	</LinearLayout>
+	<Button
+		android:id="@+id/manage_add_new_button"
+		android:text="Add New Market"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		style="@style/MenuButtonItem" />
+</LinearLayout>

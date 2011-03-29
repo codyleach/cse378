@@ -13,8 +13,7 @@
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
 		android:layout_marginTop="3px"
-		android:layout_marginBottom="3px"
-		android:textSize="20px"/>
+		android:layout_marginBottom="3px" />
 	
 	<EditText
 		android:layout_gravity="center_horizontal"
@@ -38,48 +37,43 @@
 		android:layout_marginLeft="10px"
 		android:layout_marginRight="10px"
 		/>
-	<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relativeLayout1">
+	<LinearLayout
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_gravity="center">
+		<Button
+			 android:id="@+id/popup_menu_button3" 
+			 android:layout_height="wrap_content" 
+			 android:layout_width="100dip" 
+			 android:text="Sign In" />
 		<Button 
 			android:layout_height="wrap_content"
 		 	android:id="@+id/popup_menu_button1"
 		 	android:layout_width="100dip" 
 		 	android:text="Cancel"
-		 	android:layout_marginLeft="10px">
-		 </Button>
-		<Button
-			 android:id="@+id/popup_menu_button3" 
-			 android:layout_height="wrap_content" 
-			 android:layout_width="90dip" 
-			 android:text="Sign In" 
-			 android:layout_alignParentTop="true" 
-			 android:layout_marginLeft="120px">
-			</Button>
-		
-	</RelativeLayout>
+		 	android:layout_marginLeft="5dip" />
+	</LinearLayout>
 	
-	<RelativeLayout 
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:id="@+id/relativeLayout2" 
-		android:gravity="bottom"
-		android:layout_marginTop="30px">
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_marginTop="30px"
+		android:orientation="vertical">
 		<TextView
-			android:text="Not yet a member?"
+			android:text="Not a member yet?"
 			android:textColor="#fff"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="20px"
-			android:layout_marginTop="10px"
-			android:layout_marginBottom="3px"
-			android:textSize="20px"/>
+			android:layout_gravity="center" />
 		<Button
 			 android:id="@+id/popup_menu_button2" 
 			 android:layout_height="wrap_content" 
-			 android:layout_width="100dip" 
-			 android:text="Register" 
-			 android:layout_alignParentTop="true" 
-			 android:layout_marginLeft="218px">
+			 android:layout_width="210dip" 
+			 android:text="Register"
+			 android:layout_gravity="center">
 		</Button>
-	</RelativeLayout>
+	</LinearLayout>
 
 </LinearLayout>

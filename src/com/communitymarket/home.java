@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 public class home extends Activity {
     /** Called when the activity is first created. */
 	private PopupWindow pw;
+	private View layout;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +47,7 @@ public class home extends Activity {
             }
         });
         
-     // get the instance of the LayoutInflater
+        // get the instance of the LayoutInflater
         final LayoutInflater inflater = (LayoutInflater) home.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       
 
@@ -53,53 +56,69 @@ public class home extends Activity {
         final Button coordinatorButton = (Button) findViewById(R.id.marketCoordinator);
         coordinatorButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	
-            	  // inflate our view from the corresponding XML file
-                View layout = inflater.inflate(R.layout.popup_login, (ViewGroup) findViewById(R.id.popup_menu_root));
+            	// inflate our view from the corresponding XML file
+                layout = inflater.inflate(R.layout.popup_login, (ViewGroup) findViewById(R.id.popup_menu_root));
                 
-                
-                // create a 100px width and 200px height popup window
+                // Create the popup
                 pw = new PopupWindow(layout, 375, 425, true);
-                // set actions to buttons we have in our popup
-                Button button1 = (Button)layout.findViewById(R.id.popup_menu_button1);
+                
+                // Set actions to the popup
+                Button button1 = (Button)layout.findViewById(R.id.popup_menu_cancel_button);
                 button1.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
-                        // close the popup
+                        // Close the popup
                         pw.dismiss();
                     }
                 });
             
-                Button button3 = (Button)layout.findViewById(R.id.popup_menu_button3);
+                Button button3 = (Button)layout.findViewById(R.id.popup_menu_signin_button);
                 button3.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
                     	// Perform action on click
-                    	 pw.dismiss();
+                    	pw.dismiss();
                     	Intent intent = new Intent(home.this, UserMenu.class);
                     	intent.putExtra("usertype", UserType.Coordinator);
         				startActivityForResult(intent, 0);
-                    	
                     }
                 });
                 
-                Button button2 = (Button)layout.findViewById(R.id.popup_menu_button2);
+                Button regSaveButton = (Button) layout.findViewById(R.id.popup_register_save_button);
+                regSaveButton.setOnClickListener(new OnClickListener() {
+                    public void onClick(View v) {
+                        // Close the popup
+                    	pw.dismiss();
+                    	Intent intent = new Intent(home.this, UserMenu.class);
+                    	intent.putExtra("usertype", UserType.Coordinator);
+        				startActivityForResult(intent, 0);
+                    }
+                });
+                
+                Button regCancelButton = (Button) layout.findViewById(R.id.popup_register_cancel_button);
+                regCancelButton.setOnClickListener(new OnClickListener() {
+                    public void onClick(View v) {
+                        // Close the popup
+                    	LinearLayout loginLayout = (LinearLayout) layout.findViewById(R.id.popup_login_layout);
+                    	loginLayout.setVisibility(View.VISIBLE);
+                    	
+                    	LinearLayout regLayout = (LinearLayout) layout.findViewById(R.id.popup_login_register_layout);
+                    	regLayout.setVisibility(View.GONE);
+                    }
+                });
+                
+                Button button2 = (Button)layout.findViewById(R.id.popup_menu_register_button);
                 button2.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
                     	// Perform action on click
-                    	 pw.dismiss();
-                    	Intent intent = new Intent(home.this, UserRegistration.class);
-                    	intent.putExtra("usertype", UserType.Coordinator);
-        				startActivityForResult(intent, 0);
+                    	LinearLayout loginLayout = (LinearLayout) layout.findViewById(R.id.popup_login_layout);
+                    	loginLayout.setVisibility(View.GONE);
                     	
-                    	//View layoutRegister = inflater.inflate(R.layout.popup_register, (ViewGroup) findViewById(R.id.popup_menu_root));	
-                    	//new PopupWindow(layoutRegister, 300, 300, true);
-                    	
+                    	LinearLayout regLayout = (LinearLayout) layout.findViewById(R.id.popup_login_register_layout);
+                    	regLayout.setVisibility(View.VISIBLE);
                     }
                 });
                 
                 // finally show the popup in the center of the window
                 pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            	
-            	
             }
         });
     }

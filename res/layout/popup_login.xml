@@ -5,75 +5,146 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-    
-    <TextView
-		android:layout_gravity="center_horizontal"
-		android:text="Login"
-		android:textColor="#fff"
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content"
-		android:layout_marginTop="3px"
-		android:layout_marginBottom="3px" />
-	
-	<EditText
-		android:layout_gravity="center_horizontal"
-		android:hint="Username"
-		android:textColor="#111"
-		android:editable="true"
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_marginBottom="5px"
-		android:layout_marginLeft="10px"
-		android:layout_marginRight="10px"
-		/>	
-	<EditText
-		android:layout_gravity="center_horizontal"
-		android:hint="Password"
-		android:textColor="#111"
-		android:editable="true"
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_marginBottom="5px"
-		android:layout_marginLeft="10px"
-		android:layout_marginRight="10px"
-		/>
-	<LinearLayout
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:layout_gravity="center">
-		<Button
-			 android:id="@+id/popup_menu_button3" 
-			 android:layout_height="wrap_content" 
-			 android:layout_width="100dip" 
-			 android:text="Sign In" />
-		<Button 
-			android:layout_height="wrap_content"
-		 	android:id="@+id/popup_menu_button1"
-		 	android:layout_width="100dip" 
-		 	android:text="Cancel"
-		 	android:layout_marginLeft="5dip" />
-	</LinearLayout>
-	
-	<LinearLayout 
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal|bottom"
-		android:layout_marginTop="30px"
-		android:orientation="vertical">
-		<TextView
-			android:text="Not a member yet?"
+    <LinearLayout
+	    android:id="@+id/popup_login_layout"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    <TextView
+			android:layout_gravity="center_horizontal"
+			android:text="Login"
 			android:textColor="#fff"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
-			android:layout_gravity="center" />
-		<Button
-			 android:id="@+id/popup_menu_button2" 
-			 android:layout_height="wrap_content" 
-			 android:layout_width="210dip" 
-			 android:text="Register"
-			 android:layout_gravity="center">
-		</Button>
+			android:layout_marginTop="3px"
+			android:layout_marginBottom="3px" />
+		
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:hint="Username"
+			android:textColor="#111"
+			android:editable="true"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="5px"
+			android:layout_marginLeft="10px"
+			android:layout_marginRight="10px"
+			/>	
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:hint="Password"
+			android:textColor="#111"
+			android:editable="true"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="5px"
+			android:layout_marginLeft="10px"
+			android:layout_marginRight="10px"
+			/>
+		<LinearLayout
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_gravity="center">
+			<Button
+				 android:id="@+id/popup_menu_signin_button" 
+				 android:layout_height="wrap_content" 
+				 android:layout_width="100dip" 
+				 android:text="Sign In" />
+			<Button 
+				android:layout_height="wrap_content"
+			 	android:id="@+id/popup_menu_cancel_button"
+			 	android:layout_width="100dip" 
+			 	android:text="Cancel"
+			 	android:layout_marginLeft="5dip" />
+		</LinearLayout>
+		<LinearLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal|bottom"
+			android:layout_marginTop="30px"
+			android:orientation="vertical">
+			<TextView
+				android:text="Not a member yet?"
+				android:textColor="#fff"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:layout_gravity="center" />
+			<Button
+				 android:id="@+id/popup_menu_register_button" 
+				 android:layout_height="wrap_content" 
+				 android:layout_width="210dip" 
+				 android:text="Register"
+				 android:layout_gravity="center">
+			</Button>
+		</LinearLayout>
 	</LinearLayout>
-
+	<LinearLayout
+	    android:id="@+id/popup_login_register_layout"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:visibility="gone">
+	    <TextView
+			android:layout_gravity="center_horizontal"
+			android:text="Register"
+			android:textColor="#fff"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_marginTop="3px"
+			android:layout_marginBottom="3px"
+			android:textSize="20px"/>
+		
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:hint="Name"
+			android:textColor="#111"
+			android:editable="true"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="5px"
+			android:layout_marginLeft="10px"
+			android:layout_marginRight="10px"
+			/>	
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:hint="Username/Email"
+			android:textColor="#111"
+			android:editable="true"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="5px"
+			android:layout_marginLeft="10px"
+			android:layout_marginRight="10px"
+			/>	
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:hint="Password"
+			android:textColor="#111"
+			android:editable="true"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="5px"
+			android:layout_marginLeft="10px"
+			android:layout_marginRight="10px"
+			/>
+		<LinearLayout
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginLeft="10px"
+			android:layout_gravity="center">
+			<Button
+				 android:id="@+id/popup_register_save_button" 
+				 android:layout_height="wrap_content" 
+				 android:layout_width="100dip" 
+				 android:text="Register" />
+			<Button 
+				android:layout_height="wrap_content"
+			 	android:id="@+id/popup_register_cancel_button"
+			 	android:layout_width="100dip" 
+			 	android:text="Cancel"
+			 	android:layout_marginLeft="5dip" />
+		</LinearLayout>
+	</LinearLayout>
 </LinearLayout>

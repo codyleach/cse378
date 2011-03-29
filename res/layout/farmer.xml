@@ -74,7 +74,7 @@
 				android:layout_height="3dip"
 				android:background="#FF406096" />
 			<RatingBar
-				android:id="@+id/farmer_rating"
+				android:id="@+id/user_rating"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:numStars="5"

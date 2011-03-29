@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_menu_root"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <TextView
+		android:layout_gravity="center_horizontal"
+		android:text="Register"
+		android:textColor="#fff"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:layout_marginTop="3px"
+		android:layout_marginBottom="3px"
+		android:textSize="20px"/>
+	
+	<EditText
+		android:layout_gravity="center_horizontal"
+		android:hint="Name"
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="5px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
+		/>	
+	<EditText
+		android:layout_gravity="center_horizontal"
+		android:hint="Username/Email"
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="5px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
+		/>	
+	<EditText
+		android:layout_gravity="center_horizontal"
+		android:hint="Password"
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="5px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
+		/>
+	<RelativeLayout 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/relativeLayout1">
+		<Button 
+			android:layout_height="wrap_content"
+		 	android:id="@+id/popup_menu_button1"
+		 	android:layout_width="100dip" 
+		 	android:text="Cancel"
+		 	android:layout_marginLeft="10px">
+		 </Button>
+		<Button
+			 android:id="@+id/popup_menu_button3" 
+			 android:layout_height="wrap_content" 
+			 android:layout_width="90dip" 
+			 android:text="Sign In" 
+			 android:layout_alignParentTop="true" 
+			 android:layout_marginLeft="120px">
+			</Button>
+		
+	</RelativeLayout>
+
+</LinearLayout>

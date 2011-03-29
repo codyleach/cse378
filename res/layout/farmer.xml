@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
   android:background="@drawable/background_gradient"
   android:orientation="vertical">
   <include layout="@layout/header"
@@ -12,7 +12,7 @@
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
   	android:orientation="horizontal"
-	android:layout_marginTop="15dip"
+	android:layout_marginTop="10dip"
 	android:layout_marginLeft="10dip">
   		<ImageView
 			android:layout_width="wrap_content"
@@ -24,20 +24,30 @@
 			android:orientation="vertical"
 			android:layout_marginLeft="10dip">
 				<TextView
-					android:id="@+id/farmer_name"
+					android:id="@+id/comment_label"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:textColor="#FF405270"
-					android:textSize="25px"
+					android:textColor="#FFF"
+					android:textSize="35px"
+					android:shadowColor="#FF6D6D6D"
+					android:shadowDx="1"
+					android:shadowDy="1"
+					android:shadowRadius="1"
 					android:text="Liz Lemon" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="#FF405270"
+					android:textSize="18px"
+					android:text="4.2 Avg. Rating (37 users)" />
 				<RatingBar
-					android:id="@+id/farmer_rating"
-					android:layout_width="fill_parent"
-					android:layout_height="40dip"
+					android:id="@+id/avg_farmer_rating"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:numStars="5"
-					android:stepSize="1.0"
-					android:minHeight="40dip"
-					android:maxHeight="40dip" />
+					android:stepSize="0.1"
+					android:rating="4.2"
+					style="?android:attr/ratingBarStyleSmall" />
 		</LinearLayout>
   	</LinearLayout>
   	<LinearLayout
@@ -52,11 +62,43 @@
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:textColor="#FFF"
-				android:textSize="18px"
+				android:textSize="30px"
 				android:shadowColor="#FF6D6D6D"
 				android:shadowDx="1"
 				android:shadowDy="1"
 				android:shadowRadius="1"
+				android:layout_marginLeft="5dip"
+				android:text="Rate Liz Lemon" />
+			<TableLayout
+				android:layout_width="fill_parent"
+				android:layout_height="3dip"
+				android:background="#FF406096" />
+			<RatingBar
+				android:id="@+id/farmer_rating"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:numStars="5"
+				android:stepSize="1.0"
+				android:rating="0" />
+  	</LinearLayout>
+  	<LinearLayout
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:orientation="vertical"
+  		android:layout_marginLeft="10dip"
+  		android:layout_marginRight="10dip"
+  		android:layout_marginTop="10dip">
+	  		<TextView
+				android:id="@+id/product_label"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textColor="#FFF"
+				android:textSize="30px"
+				android:shadowColor="#FF6D6D6D"
+				android:shadowDx="1"
+				android:shadowDy="1"
+				android:shadowRadius="1"
+				android:layout_marginLeft="5dip"
 				android:text="Products Liz Lemon Sells" />
 			<TableLayout
 				android:layout_width="fill_parent"
@@ -84,11 +126,12 @@
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:textColor="#FFF"
-				android:textSize="18px"
+				android:textSize="30px"
 				android:shadowColor="#FF6D6D6D"
 				android:shadowDx="1"
 				android:shadowDy="1"
 				android:shadowRadius="1"
+				android:layout_marginLeft="5dip"
 				android:text="Customer Comments" />
 			<TableLayout
 				android:layout_width="fill_parent"
@@ -100,21 +143,41 @@
 				android:layout_marginLeft="5dip"
 				android:layout_marginRight="5dip"
 				android:layout_marginTop="5dip"
-				android:background="#22000000">
+				android:orientation="vertical"
+				android:background="#22000000"
+				android:padding="5dip">
 					<TextView
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content"
-						android:textColor="#FF405270"
-						android:textSize="14px"
+						android:textColor="#FFF"
 						android:text="&quot;Your carrots are so great!!&quot;" />
 					<TextView
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginLeft="10dip"
-						android:layout_marginRight="10dip"
-						android:textColor="#eee"
-						android:textSize="11px"
+						android:textColor="#FF405270"
+						android:textSize="20px"
 						android:text="by Jack Donaghy at 7:37pm" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_marginLeft="5dip"
+				android:layout_marginRight="5dip"
+				android:layout_marginTop="5dip"
+				android:orientation="vertical"
+				android:background="#22000000"
+				android:padding="5dip">
+					<TextView
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:textColor="#FFF"
+						android:text="&quot;Harold and I loved your lemons. They're very sour!&quot;" />
+					<TextView
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="20px"
+						android:text="by Kenneth Parcell at 10:42am" />
 			</LinearLayout>
   	</LinearLayout>
 </LinearLayout>

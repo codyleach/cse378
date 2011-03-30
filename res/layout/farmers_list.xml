@@ -71,13 +71,13 @@
             	android:id="@+id/textView1" 
             	android:gravity="center_vertical" 
             	android:text="John Johnston" 
-            	android:textColor="#000000"
+            	android:textColor="#FFF"
             	android:layout_width="fill_parent">
             </TextView>
    			<TextView 
    				android:layout_height="26dip" 
    				android:text="Corn, Wheat" 
-   				android:textColor="#000000"
+   				android:textColor="#FF405270"
    				android:id="@+id/secondLine" 
    				android:ellipsize="marquee" 
    				android:layout_width="fill_parent" 
@@ -131,13 +131,13 @@
             	android:id="@+id/textView1" 
             	android:gravity="center_vertical" 
             	android:text="Liz Lemon" 
-            	android:textColor="#000000"
+            	android:textColor="#FFF"
             	android:layout_width="fill_parent">
             </TextView>
    			<TextView 
    				android:layout_height="26dip" 
    				android:text="Lemons, Carrots" 
-   				android:textColor="#000000"
+   				android:textColor="#FF405270"
    				android:id="@+id/secondLine" 
    				android:ellipsize="marquee" 
    				android:layout_width="fill_parent" 
@@ -189,13 +189,13 @@
             	android:id="@+id/textView1" 
             	android:gravity="center_vertical" 
             	android:text="Paul Newman" 
-            	android:textColor="#000000"
+            	android:textColor="#FFF"
             	android:layout_width="fill_parent">
             </TextView>
    			<TextView 
    				android:layout_height="26dip" 
    				android:text="Salad Dressing" 
-   				android:textColor="#000000"
+   				android:textColor="#FF405270"
    				android:id="@+id/secondLine" 
    				android:ellipsize="marquee" 
    				android:layout_width="fill_parent" 
@@ -247,13 +247,13 @@
             	android:id="@+id/textView1" 
             	android:gravity="center_vertical" 
             	android:text="Barry Griffen" 
-            	android:textColor="#000000"
+            	android:textColor="#FFF"
             	android:layout_width="fill_parent">
             </TextView>
    			<TextView 
    				android:layout_height="26dip" 
    				android:text="Tomatos, Grapes" 
-   				android:textColor="#000000"
+   				android:textColor="#FF405270"
    				android:id="@+id/secondLine" 
    				android:ellipsize="marquee" 
    				android:layout_width="fill_parent" 

@@ -4,101 +4,84 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background">
-	
+	<include layout="@layout/header"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="fill_parent"
+	  	android:layout_marginBottom="15dip" />
 	<TextView
-		android:layout_gravity="center_horizontal"
-		android:text="Haymarket Farmers' Market"
-		android:textColor="#fff"
-		android:layout_width="wrap_content" 
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="15px"
-		android:layout_marginBottom="10px"
-		android:textSize="18px"
-		android:textStyle="bold"
-	/>
-	<LinearLayout
+		style="@style/HeaderTextViewStyle"
+		android:text="Haymarket Farmers' Market" />
+	<TableLayout
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="5dip"
-		android:orientation="horizontal"
-	>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:textStyle="bold"
-			android:text="Address:"
-		/>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:text="8th and P Street\nLincoln, NE 68508"
-		/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="5dip"
-		android:orientation="horizontal"
-	>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:textStyle="bold"
-			android:text="Phone:"
-		/>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:text="(402) 555-5555"
-		/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="5dip"
-		android:orientation="horizontal"
-	>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:textStyle="bold"
-			android:text="Dates:"
-		/>
-		<TextView
-			android:layout_gravity="left"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="5dip"
-			android:textColor="#fff"
-			android:textSize="14px"
-			android:text="Saturdays 8 A.M. - 12 noon\nMay - October"
-		/>
-	</LinearLayout>
+		android:layout_height="wrap_content">
+		<TableRow>
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:textStyle="bold"
+				android:text="Address:" />
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:text="8th and P Street\nLincoln, NE 68508"
+				android:layout_column="1" />
+		</TableRow>
+		<TableRow>
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:textStyle="bold"
+				android:text="Phone:" />
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:text="(402) 555-5555"
+				android:layout_column="1" />
+		</TableRow>
+		<TableRow>
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:textStyle="bold"
+				android:text="Dates:" />
+			<TextView
+				android:layout_gravity="left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="5dip"
+				android:textColor="#fff"
+				android:textSize="20px"
+				android:text="Saturdays 8 A.M. - 12 noon\nMay - October" 
+				android:layout_column="1" />
+		</TableRow>
+	</TableLayout>
 	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/subscribe_button"
 	  	android:text="Subscribe to Notifications"
 	  	style="@style/MenuButtonItem" 
-	  	android:layout_marginTop="30dip"
+	  	android:layout_marginTop="15dip"
   	/>
   	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/view_products_button"

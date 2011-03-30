@@ -4,18 +4,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background">
-	
+	<include layout="@layout/header"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="fill_parent"
+	  	android:layout_marginBottom="15dip" />
 	<TextView
-		android:layout_gravity="center_horizontal"
-		android:text="Lincoln, NE, 68508"
-		android:textColor="#fff"
-		android:textSize="18px"
-		android:textStyle="bold"
-		android:layout_width="wrap_content" 
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="15px"
-		android:layout_marginBottom="15px"
-		/>
+		style="@style/HeaderTextViewStyle"
+		android:text="Lincoln, NE, 68508" />
 	<ImageView 
 		android:layout_gravity="center"
 		android:layout_width="wrap_content" 

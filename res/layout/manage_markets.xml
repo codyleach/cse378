@@ -7,18 +7,13 @@
   android:background="@drawable/background_gradient">
 	<include layout="@layout/header"
 	  	android:layout_height="wrap_content"
-	  	android:layout_width="fill_parent" />
+	  	android:layout_width="fill_parent"
+	  	android:layout_marginBottom="15dip" />
   	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:textColor="#FFF"
-		android:textSize="35px"
-		android:shadowColor="#FF6D6D6D"
-		android:shadowDx="1"
-		android:shadowDy="1"
-		android:shadowRadius="1"
-		android:text="Your Markets"
-		android:layout_gravity="center_horizontal" />
+		style="@style/HeaderTextViewStyle"
+		android:text="Your Markets" />
 	<LinearLayout
 	  	android:orientation="vertical"
 		android:layout_width="fill_parent"

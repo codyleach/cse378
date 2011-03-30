@@ -4,7 +4,8 @@
   	android:orientation="vertical"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:layout_weight="1">
+	android:layout_weight="1"
+	android:background="@drawable/header_background_gradient">
 	<ImageView
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -12,4 +13,12 @@
 		android:layout_marginRight="10dip"
 		android:layout_marginTop="15dip"
 		android:src="@drawable/logo" />
+	<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="2dip"
+		android:background="#FF406096" />
+		<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="1dip"
+		android:background="#776D6D6D" />
 </LinearLayout>

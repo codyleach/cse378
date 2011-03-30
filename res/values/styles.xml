@@ -7,4 +7,13 @@
 		<item name="android:layout_marginRight">5dip</item>
 		<item name="android:gravity">center_vertical</item>
 	</style>
+	<style name="HeaderTextViewStyle" parent="@android:style/Widget.TextView">
+		<item name="android:textColor">#FFF</item>
+		<item name="android:textSize">35px</item>
+		<item name="android:shadowColor">#FF6D6D6D</item>
+		<item name="android:shadowDx">1</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">1</item>
+		<item name="android:layout_gravity">center_horizontal</item>
+	</style>
 </resources>

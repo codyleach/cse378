@@ -7,18 +7,13 @@
 	android:background="@drawable/background_gradient">
 		<include layout="@layout/header"
 		  	android:layout_height="wrap_content"
-		  	android:layout_width="fill_parent" />
+		  	android:layout_width="fill_parent"
+		  	android:layout_marginBottom="15dip" />
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textColor="#FFF"
-			android:textSize="35px"
-			android:shadowColor="#FF6D6D6D"
-			android:shadowDx="1"
-			android:shadowDy="1"
-			android:shadowRadius="1"
-			android:text="Add A New Market"
-			android:layout_gravity="center_horizontal" />
+			style="@style/HeaderTextViewStyle"
+			android:text="Add A New Market" />
 		<EditText
 			android:id="@+id/add_new_market_name"
 			android:layout_gravity="center_horizontal"

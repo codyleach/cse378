@@ -8,7 +8,8 @@
   android:background="@drawable/background_gradient">
 	<include layout="@layout/header"
 	  	android:layout_height="wrap_content"
-	  	android:layout_width="fill_parent" />
+	  	android:layout_width="fill_parent"
+	  	android:layout_marginBottom="15dip" />
 	<LinearLayout
 	  	android:orientation="vertical"
 		android:layout_width="fill_parent"

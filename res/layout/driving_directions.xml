@@ -4,6 +4,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background">
+    <include layout="@layout/header"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="fill_parent"
+	  	android:layout_marginBottom="15dip" />
+    <TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		style="@style/HeaderTextViewStyle"
+		android:text="Driving Directions" />
   	<com.communitymarket.MenuButtonItem
 	  	android:id="@+id/change_origin_button"
 	  	android:text="Change Origin"
@@ -33,8 +42,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="70px"
 			android:gravity="center_vertical"
-			android:textColor="#fff"
-			android:textSize="16px"
+			android:textColor="#FF405271"
+			android:textSize="22px"
 			android:shadowColor="#6d6d6d"
 			android:shadowDx="1"
 			android:shadowDy="1"
@@ -60,8 +69,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="70px"
 			android:gravity="center_vertical"
-			android:textColor="#fff"
-			android:textSize="16px"
+			android:textColor="#FF405271"
+			android:textSize="22px"
 			android:shadowColor="#6d6d6d"
 			android:shadowDx="1"
 			android:shadowDy="1"
@@ -87,8 +96,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="70px"
 			android:gravity="center_vertical"
-			android:textColor="#fff"
-			android:textSize="16px"
+			android:textColor="#FF405271"
+			android:textSize="22px"
 			android:text="Right on P Street"
 			android:shadowColor="#6d6d6d"
 			android:shadowDx="1"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Community Market</string>
-    <string name="markets">Find Markets</string>
-    <string name="farmers">Find Farmers</string>
-    <string name="products">Find Products</string>
+    <string name="markets">Markets</string>
+    <string name="farmers">Farmers</string>
+    <string name="products">Products</string>
     <string name="recipes">Recipes</string>
     <string name="manage_markets">Manage Markets</string>
     <string name="back">Back</string>

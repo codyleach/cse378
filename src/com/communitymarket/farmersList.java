@@ -19,6 +19,7 @@ public class farmersList extends Activity {
         
         // Search Button
         Button searchButton = (Button) findViewById(R.id.search_farmers_button);
+        
         if (searchButton != null) {
         	searchButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -28,6 +29,14 @@ public class farmersList extends Activity {
                 }
             });
         }
+        
+        
+        
+    }
+    
+    public void myClickHandler(View v) {
+    	Intent intent = new Intent(farmersList.this, Farmer.class);
+		startActivityForResult(intent, 0);
     }
     
     @Override

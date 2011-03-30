@@ -12,7 +12,8 @@
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
         <activity android:name=".home"
                   android:label="@string/app_name"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:screenOrientation="portrait">
            <intent-filter>
                <action android:name="android.intent.action.MAIN" />
                <category android:name="android.intent.category.LAUNCHER" />
@@ -20,59 +21,73 @@
         </activity>
 		<activity android:name=".UserMenu"
                   android:label="@string/app_name"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".farmersList"
                   android:label="@string/app_name"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".Farmer"
                   android:label="@string/app_name"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".findMarkets"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".findProducts"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".findRecipes"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".marketSearchResults"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".marketInformation"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".drivingDirections"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".drivingDirectionsMap"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".changeOrigin"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".UserRegistration"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ManageMarkets"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".AddNewMarket"
         		  android:label="@string/app_name"
-        		  android:theme="@android:style/Theme.NoTitleBar">
+        		  android:theme="@android:style/Theme.NoTitleBar"
+        		  android:screenOrientation="portrait">
         </activity>
     </application>
 </manifest>

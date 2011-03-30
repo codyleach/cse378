@@ -2,9 +2,13 @@ package com.communitymarket;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -104,5 +108,26 @@ public class Farmer extends Activity {
                 pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
 			}
 		});
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.go_home:
+            Intent intent = new Intent(Farmer.this, UserMenu.class);
+            intent.putExtra("usertype", UserType.Consumer);
+            startActivityForResult(intent, 0);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

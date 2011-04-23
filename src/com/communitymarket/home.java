@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -74,6 +75,19 @@ public class home extends Activity {
                 Button button3 = (Button)layout.findViewById(R.id.popup_menu_signin_button);
                 button3.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
+                    	// Get the values from the form
+                    	String username = ((EditText) layout.findViewById(R.id.popup_login_username)).getText().toString();
+                    	String password = ((EditText) layout.findViewById(R.id.popup_login_password)).getText().toString(); 
+                    	
+                    	// Make sure the values are valid
+                    	if (username.equals("") || password.equals(""))
+                    		return;
+                    	
+                    	// Log me in, log me in
+                    	LoginDbAdapter loginAdapter = new LoginDbAdapter(v.getContext());
+                    	if (!loginAdapter.authUser(username, password))
+                    		return;
+                    	
                     	// Perform action on click
                     	pw.dismiss();
                     	Intent intent = new Intent(home.this, UserMenu.class);
@@ -85,6 +99,20 @@ public class home extends Activity {
                 Button regSaveButton = (Button) layout.findViewById(R.id.popup_register_save_button);
                 regSaveButton.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
+                    	// Get the values from the form
+                    	String username = ((EditText) layout.findViewById(R.id.popup_register_username)).getText().toString();
+                    	String email = ((EditText) layout.findViewById(R.id.popup_register_email)).getText().toString(); 
+                    	String password = ((EditText) layout.findViewById(R.id.popup_register_password)).getText().toString(); 
+                    	
+                    	// Make sure the values are valid
+                    	if (username.equals("") || email.equals("") || password.equals(""))
+                    		return;
+                    	
+                    	// Register the user
+                    	LoginDbAdapter loginAdapter = new LoginDbAdapter(v.getContext());
+                    	if (!loginAdapter.addUser(username, email, password))
+                    		return;
+                    	
                         // Close the popup
                     	pw.dismiss();
                     	Intent intent = new Intent(home.this, UserMenu.class);

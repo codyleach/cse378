@@ -5,13 +5,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class LoginDbOpenHelper extends SQLiteOpenHelper {
-	private static final int 	DB_VERSION 	 = 1;
+	private static final int 	DB_VERSION 	 = 2;
 	private static final String DB_NAME		 = "communitymarket";
-    public static final String TABLE_NAME 	 = "users";
+    public  static final String TABLE_NAME 	 = "users";
     private static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME 
-                + " (" + LoginDbAdapter.USERNAME_FIELD + " TEXT, "
+                + " (" + LoginDbAdapter.TYPE_FIELD + " TEXT, "
+                + LoginDbAdapter.NAME_FIELD + " TEXT, "
                 + LoginDbAdapter.EMAIL_FIELD + " TEXT, "
-                + LoginDbAdapter.PASSWORD_FIELD + " TEXT);";
+                + LoginDbAdapter.USERNAME_FIELD + " TEXT, "
+                + LoginDbAdapter.PASSWORD_FIELD + " TEXT, "
+                + LoginDbAdapter.PRODUCTS_FIELD + " TEXT);";
 
     LoginDbOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

@@ -1,7 +1,10 @@
 package com.communitymarket;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +14,16 @@ import android.view.MenuItem;
 
 public class marketSearchResults extends Activity {
 	
+	
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.market_search_results); 
+        
+        
+    	
         
       //Get Info Button
         final Button infoButton = (Button) findViewById(R.id.getInfoButton);
@@ -32,10 +40,23 @@ public class marketSearchResults extends Activity {
         final Button drivingDirectionsButton = (Button) findViewById(R.id.drivingDirectionsButton);
         drivingDirectionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	Bundle extras = getIntent().getExtras();
+            	String marketSearch = extras.getString("searchResult");
                 // Perform action on click
-            	Intent intent = new Intent(marketSearchResults.this, drivingDirections.class);
+            	/*Intent intent = new Intent(marketSearchResults.this, drivingDirections.class);
             	intent.putExtra("usertype", UserType.Consumer);
-				startActivityForResult(intent, 0);
+				startActivityForResult(intent, 0); */
+            	Uri uri = Uri.parse("http://maps.google.com/maps?saddr=\""+marketSearch +"\"&daddr=\"8th and P lincoln, NE\"");
+            	Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            	try {
+            		startActivity(intent);
+            	} catch (ActivityNotFoundException e) {
+            	    /*AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            	    dialog.setTitle("Location");
+            	    dialog.setMessage("40.8");
+            	    dialog.setPositiveButton("OK", null);
+            	    dialog.show();*/
+            	}
             }
         });
         

@@ -29,9 +29,6 @@ public class farmersList extends Activity {
                 }
             });
         }
-        
-        
-        
     }
     
     public void myClickHandler(View v) {

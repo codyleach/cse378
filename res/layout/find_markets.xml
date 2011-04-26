@@ -14,6 +14,7 @@
 		style="@style/HeaderTextViewStyle"
 		android:text="Search Markets" />
 	<EditText
+		android:id="@+id/market_search_box"
 		android:layout_gravity="center_horizontal"
 		android:hint="Enter ZIP or State"
 		android:textColor="#111"

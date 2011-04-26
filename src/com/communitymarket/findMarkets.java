@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class findMarkets extends Activity {
 	
+
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,11 @@ public class findMarkets extends Activity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
+            	String mSearchMarket = ((EditText) findViewById(R.id.market_search_box)).getText().toString();
             	Intent intent = new Intent(findMarkets.this, marketSearchResults.class);
             	intent.putExtra("usertype", UserType.Consumer);
-				startActivityForResult(intent, 0);
+            	intent.putExtra("searchResult", mSearchMarket);
+            	startActivityForResult(intent, 0);
             	
             }
         });

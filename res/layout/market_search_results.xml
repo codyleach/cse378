@@ -12,7 +12,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		style="@style/HeaderTextViewStyle"
-		android:text="Lincoln, NE, 68508" />
+		android:text="Markets in your area" />
 	<ImageView 
 		android:layout_gravity="center"
 		android:layout_width="wrap_content" 

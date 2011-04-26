@@ -11,7 +11,7 @@ public class RatingDbOpenHelper extends SQLiteOpenHelper {
     private static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME 
                 + " (" + RatingDbAdapter.USERNAME_FIELD + " TEXT, "
                 + RatingDbAdapter.RATING_FIELD + " INT, "
-                + RatingDbAdapter.FARMER_ID_FIELD + " INT);";
+                + RatingDbAdapter.FARMER_ID_FIELD + " TEXT);";
 
     RatingDbOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

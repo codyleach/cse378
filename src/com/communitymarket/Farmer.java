@@ -12,15 +12,21 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 public class Farmer extends Activity {
 	private static final int LOGIN_REQUEST = 0;
 	private RatingBar _ratingBar = null;
+	private RatingDbAdapter ratingDb;
+	
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer);
-        
+        ratingDb = new RatingDbAdapter(this);
         //Coordinator Button
         _ratingBar = (RatingBar) findViewById(R.id.user_rating);
+        if(LoginDbAdapter.getCurrentUser() != null) {
+        	int farmerRating = ratingDb.getRating("lizLemon", LoginDbAdapter.getCurrentUser().getUsername());
+        	_ratingBar.setRating(farmerRating);
+        }
         _ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
 			public void onRatingChanged(RatingBar ratingBar, float rating,
 					boolean fromUser) {
@@ -58,6 +64,12 @@ public class Farmer extends Activity {
     	/*
     	 * DIEGO, DO YA THANG, YO! 
     	 */
+    	
+    	ratingDb.open();
+    	ratingDb.addRating("lizLemon", (int) _ratingBar.getRating(), currentUser.getUsername());
+    	
+    	//Rating userRating = RatingDbAdapter.getCurrentFarmerRating();
+    	
     }
     
     @Override

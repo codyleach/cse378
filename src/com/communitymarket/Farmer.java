@@ -6,27 +6,44 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 
 public class Farmer extends Activity {
 	private static final int LOGIN_REQUEST = 0;
 	private RatingBar _ratingBar = null;
 	private RatingDbAdapter ratingDb;
-	
+	private User _farmer;
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer);
+        
+        // Get the farmer
+        String farmer = getIntent().getExtras().getString("farmer");
+        
+        // If no farmer given, then get out
+        if (farmer == null)
+        	finish();
+        
+        // Get the farmer data
+        _farmer = LoginDbAdapter.getInstance(this.getApplicationContext()).getUser(farmer);
+        
+        if (_farmer == null)
+        	finish();
+        
+        // Set up the rating stuff
         ratingDb = new RatingDbAdapter(this);
-        //Coordinator Button
         _ratingBar = (RatingBar) findViewById(R.id.user_rating);
-        if(LoginDbAdapter.getCurrentUser() != null) {
-        	int farmerRating = ratingDb.getRating("lizLemon", LoginDbAdapter.getCurrentUser().getUsername());
-        	_ratingBar.setRating(farmerRating);
-        }
+        
+        // Populate the farmer data
+        populateFarmerData();
+        
         _ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
 			public void onRatingChanged(RatingBar ratingBar, float rating,
 					boolean fromUser) {
@@ -57,19 +74,47 @@ public class Farmer extends Activity {
     	}
     }
     
+    private void populateFarmerData() {
+    	if (_farmer == null)
+    		return;
+    	
+    	TextView name = (TextView) findViewById(R.id.farmer_name);
+    	name.setText(_farmer.getName());
+    	
+    	TextView products = (TextView) findViewById(R.id.farmer_products);
+    	products.setText(_farmer.getProducts());
+    	
+    	// Set the image
+    	ImageView image = (ImageView) findViewById(R.id.farmer_image);
+		String username = _farmer.getUsername();
+		if (username.equals("jjohnston"))
+			image.setImageResource(R.drawable.john_johnston);
+		else if (username.equals("llemon"))
+			image.setImageResource(R.drawable.liz_lemon);
+		else if (username.equals("pnewman"))
+			image.setImageResource(R.drawable.paul_newman);
+		else if (username.equals("bgriffen"))
+			image.setImageResource(R.drawable.barry_griffin);
+		
+		// Set the header data
+		TextView ratingHeader = (TextView) findViewById(R.id.farmer_rate_header_text);
+		ratingHeader.setText("Rate " + _farmer.getName());
+		TextView productsHeader = (TextView) findViewById(R.id.farmer_products_header_text);
+		productsHeader.setText("Products " + _farmer.getName() + " Sells");
+    	
+    	if(LoginDbAdapter.getCurrentUser() != null) {
+        	int farmerRating = ratingDb.getRating(_farmer.getUsername(), LoginDbAdapter.getCurrentUser().getUsername());
+        	_ratingBar.setRating(farmerRating);
+        }
+    }
+    
     private void saveUserRating() {
     	// Get the current user
     	User currentUser = LoginDbAdapter.getCurrentUser();
-    	
-    	/*
-    	 * DIEGO, DO YA THANG, YO! 
-    	 */
-    	
+
+    	// Save it!
     	ratingDb.open();
-    	ratingDb.addRating("lizLemon", (int) _ratingBar.getRating(), currentUser.getUsername());
-    	
-    	//Rating userRating = RatingDbAdapter.getCurrentFarmerRating();
-    	
+    	ratingDb.addRating(_farmer.getUsername(), (int) _ratingBar.getRating(), currentUser.getUsername());
     }
     
     @Override

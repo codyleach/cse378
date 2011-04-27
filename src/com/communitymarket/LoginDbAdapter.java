@@ -1,5 +1,7 @@
 package com.communitymarket;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,9 +25,12 @@ public class LoginDbAdapter {
 	private static User _currentUser;
 	private static LoginDbAdapter _instance;
 	
-	protected LoginDbAdapter() {
-		// Ensures that only the singleton exists
-	}
+	/**
+	 * Constructor
+	 * 
+	 * Is protected to ensure that only the singleton exists.
+	 */
+	protected LoginDbAdapter() { }
 	
 	public static LoginDbAdapter getInstance(Context context) {
 		if (_instance == null) {
@@ -53,6 +58,12 @@ public class LoginDbAdapter {
 		}
 	}
 	
+	public void close() {
+		if (_database != null)
+			_database.close();
+		_database = null;
+	}
+	
 	public boolean addUser(User user) {
 		// Make sure we're all set up
 		open();
@@ -60,6 +71,7 @@ public class LoginDbAdapter {
 		// Make sure the inputs aren't null
 		if (user.getName().equals("") || user.getUsername().equals("") || 
 			user.getEmail().equals("") || user.getPassword().equals("")) {
+			close();
 			return false;
 		}
 		
@@ -78,6 +90,8 @@ public class LoginDbAdapter {
 			_currentUser = user;
 		}
 		
+		close();
+		
 		return true;
 	}
 	
@@ -85,59 +99,144 @@ public class LoginDbAdapter {
 		// Make sure we're all set up
 		open();
 		
+		boolean result = false;
+		
 		// Make sure input isn't null
-		if (username.equals(""))
-			return false;
+		if (username.equals("")) {
+			result = false;
+		} else {
+			// Query the database
+			String[] fields = { USERNAME_FIELD };
+			String condition = USERNAME_FIELD + "='" + username + "'";
+			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			
+			// Does it exist?
+			if (cursor == null)
+				result = false;
+			else if (cursor.getCount() == 0)
+				result = false;
+			else
+				result = true;
+		}
 		
-		// Query the database
-		String[] fields = { USERNAME_FIELD };
-		String condition = USERNAME_FIELD + "='" + username + "'";
-		Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+		close();
+		return result;
+	}
+	
+	public User getUser(String username) {
+		// Make sure we're all set up
+		open();
 		
-		// Does it exist?
-		if (cursor == null)
-			return false;
-		if (cursor.getCount() == 0)
-			return false;
-		else
-			return true;
+		User result = null;
+		
+		// Make sure inputs aren't null
+		if (username.equals("")) {
+			result = null;
+		} else {
+			// Query the database
+			String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
+			String condition = USERNAME_FIELD + "='" + username + "'";
+			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			
+			// Does it exist?
+			if (cursor == null)
+				result = null;
+			else if (cursor.getCount() == 0)
+				result = null;
+			else {
+				// Get the first record
+				cursor.moveToFirst();
+				
+				// Fill in the user data
+				User dbUser = new User();
+				dbUser.setType(cursor.getString(cursor.getColumnIndex(TYPE_FIELD)));
+				dbUser.setName(cursor.getString(cursor.getColumnIndex(NAME_FIELD)));
+				dbUser.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_FIELD)));
+				dbUser.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME_FIELD)));
+				dbUser.setProducts(cursor.getString(cursor.getColumnIndex(PRODUCTS_FIELD)));
+				result = dbUser;
+			}
+		}
+		close();
+		return result;
 	}
 	
 	public User authUser(String username, String password) {
 		// Make sure we're all set up
 		open();
 		
+		User result = null;
+		
 		// Make sure inputs aren't null
-		if (username.equals("") || password.equals(""))
-			return null;
+		if (username.equals("") || password.equals("")) {
+			result = null;
+		} else {
+			// Query the database
+			String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
+			String condition = USERNAME_FIELD + "='" + username + "'";
+			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			
+			// Does it exist?
+			if (cursor == null)
+				result = null;
+			else if (cursor.getCount() == 0)
+				result = null;
+			else {
+				// Get the first record
+				cursor.moveToFirst();
+				
+				// Check the password
+				String dbPassword = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
+				if (dbPassword.equals(password)) {
+					User dbUser = new User();
+					dbUser.setType(cursor.getString(cursor.getColumnIndex(TYPE_FIELD)));
+					dbUser.setName(cursor.getString(cursor.getColumnIndex(NAME_FIELD)));
+					dbUser.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_FIELD)));
+					dbUser.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME_FIELD)));
+					dbUser.setProducts(cursor.getString(cursor.getColumnIndex(PRODUCTS_FIELD)));
+					_currentUser = dbUser;
+					result = dbUser;
+				} else
+					result = null;
+			}
+		}
+		close();
+		return result;
+	}
+	
+	public ArrayList<User> getFarmerUsers() {
+		// Make sure we're all set up
+		open();
+		
+		ArrayList<User> resultList = new ArrayList<User>();
 		
 		// Query the database
 		String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
-		String condition = USERNAME_FIELD + "='" + username + "'";
+		String condition = TYPE_FIELD + "='" + UserType.Producer.toString() + "'";
 		Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
 		
 		// Does it exist?
-		if (cursor == null)
-			return null;
-		if (cursor.getCount() == 0)
-			return null;
-		
-		// Get the first record
-		cursor.moveToFirst();
-		
-		// Check the password
-		String dbPassword = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
-		if (dbPassword.equals(password)) {
-			User dbUser = new User();
-			dbUser.setType(cursor.getString(cursor.getColumnIndex(TYPE_FIELD)));
-			dbUser.setName(cursor.getString(cursor.getColumnIndex(NAME_FIELD)));
-			dbUser.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_FIELD)));
-			dbUser.setUsername(cursor.getString(cursor.getColumnIndex(TYPE_FIELD)));
-			dbUser.setProducts(cursor.getString(cursor.getColumnIndex(PRODUCTS_FIELD)));
-			_currentUser = dbUser;
-			return dbUser;
+		if (cursor != null) {
+			if (cursor.getCount() > 0) {
+				// Go to the first record
+				cursor.moveToFirst();
+				
+				// Get all the results
+				do {
+					User dbUser = new User();
+					dbUser.setType(cursor.getString(cursor.getColumnIndex(TYPE_FIELD)));
+					dbUser.setName(cursor.getString(cursor.getColumnIndex(NAME_FIELD)));
+					dbUser.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL_FIELD)));
+					dbUser.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME_FIELD)));
+					dbUser.setProducts(cursor.getString(cursor.getColumnIndex(PRODUCTS_FIELD)));
+					
+					resultList.add(dbUser);
+				} while (cursor.moveToNext());
+			}
 		}
-		_currentUser = null;
-		return null;
+		
+		// Return what was found
+		close();
+		return resultList;
 	}
 }

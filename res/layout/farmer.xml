@@ -15,17 +15,18 @@
   	android:orientation="horizontal"
 	android:layout_marginTop="10dip"
 	android:layout_marginLeft="10dip">
-  		<ImageView
+		<ImageView
+			android:id="@+id/farmer_image"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/liz_lemon" />
+			android:src="@drawable/john_johnston" />
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
 			android:layout_marginLeft="10dip">
 				<TextView
-					android:id="@+id/comment_label"
+					android:id="@+id/farmer_name"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:textColor="#FFF"
@@ -36,13 +37,14 @@
 					android:shadowRadius="1"
 					android:text="Liz Lemon" />
 				<TextView
+					android:id="@+id/farmer_avg_rating_text"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textColor="#FF405270"
 					android:textSize="18px"
 					android:text="4.2 Avg. Rating (37 users)" />
 				<RatingBar
-					android:id="@+id/avg_farmer_rating"
+					android:id="@+id/farmer_avg_rating"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:numStars="5"
@@ -59,7 +61,7 @@
   		android:layout_marginRight="10dip"
   		android:layout_marginTop="10dip">
 	  		<TextView
-				android:id="@+id/product_label"
+	  			android:id="@+id/farmer_rate_header_text"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:textColor="#FFF"
@@ -68,8 +70,7 @@
 				android:shadowDx="1"
 				android:shadowDy="1"
 				android:shadowRadius="1"
-				android:layout_marginLeft="5dip"
-				android:text="Rate Liz Lemon" />
+				android:layout_marginLeft="5dip" />
 			<TableLayout
 				android:layout_width="fill_parent"
 				android:layout_height="3dip"
@@ -90,7 +91,7 @@
   		android:layout_marginRight="10dip"
   		android:layout_marginTop="10dip">
 	  		<TextView
-				android:id="@+id/product_label"
+	  			android:id="@+id/farmer_products_header_text"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:textColor="#FFF"
@@ -99,14 +100,13 @@
 				android:shadowDx="1"
 				android:shadowDy="1"
 				android:shadowRadius="1"
-				android:layout_marginLeft="5dip"
-				android:text="Products Liz Lemon Sells" />
+				android:layout_marginLeft="5dip" />
 			<TableLayout
 				android:layout_width="fill_parent"
 				android:layout_height="3dip"
 				android:background="#FF406096" />
 			<TextView
-				android:id="@+id/product_label"
+				android:id="@+id/farmer_products"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="5dip"

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class RatingDbOpenHelper extends SQLiteOpenHelper {
-	private static final int 	DB_VERSION 	 = 1;
+	private static final int 	DB_VERSION 	 = 3;
 	private static final String DB_NAME		 = "communitymarket";
     public static final String TABLE_NAME 	 = "ratings";
     private static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME 

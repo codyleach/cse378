@@ -8,4 +8,12 @@
     <string name="manage_markets">Manage Markets</string>
     <string name="back">Back</string>
     <string name="home">Home</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="register_usertype_prompt">I\'m a...</string>
+    <string-array name="register_usertype_array">
+    	<item>Consumer</item>
+    	<item>Producer</item>
+    	<item>Market Coordinator</item>
+    </string-array>
 </resources>

@@ -16,4 +16,15 @@
 		<item name="android:shadowRadius">1</item>
 		<item name="android:layout_gravity">center_horizontal</item>
 	</style>
+	<style name="LoginEditTextStyle" parent="@android:style/Widget.EditText">
+		<item name="android:layout_gravity">center_horizontal</item>
+		<item name="android:textColor">#111</item>
+		<item name="android:editable">true</item>
+		<item name="android:layout_marginBottom">5px</item>
+		<item name="android:layout_marginLeft">10px</item>
+		<item name="android:layout_marginRight">10px</item>
+	</style>
+	<style name="RegisterEditTextStyle" parent="@style/LoginEditTextStyle">
+		<item name="android:layout_marginBottom">-5px</item>
+	</style>
 </resources>

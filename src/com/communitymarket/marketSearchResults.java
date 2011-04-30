@@ -69,14 +69,28 @@ public class marketSearchResults extends Activity {
     }
     
     @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+    	MenuItem item = menu.findItem(R.id.log_out);
+    	if (item != null) {
+    		// Is the user logged in?
+    		if (LoginDbAdapter.getCurrentUser() == null)
+    			item.setEnabled(false);
+    		else
+    			item.setEnabled(true);
+    	}
+    	
+    	return true;
+    }
+    
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-            Intent intent = new Intent(marketSearchResults.this, UserMenu.class);
-            intent.putExtra("usertype", UserType.Consumer);
-            startActivityForResult(intent, 0);
+            finish();
             return true;
+        case R.id.log_out:
+        	LoginDbAdapter.logout();
         default:
             return super.onOptionsItemSelected(item);
         }

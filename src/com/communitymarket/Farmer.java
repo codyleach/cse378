@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -15,7 +14,10 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 public class Farmer extends Activity {
 	private static final int LOGIN_REQUEST = 0;
 	private RatingBar _ratingBar = null;
-	private RatingDbAdapter ratingDb;
+	private RatingBar _avgRatingBar = null;
+	private TextView _avgRatingNum = null;
+	private TextView _avgRatingNumUsers = null;
+	private RatingDbAdapter _ratingDb;
 	private User _farmer;
 	
 	/** Called when the activity is first created. */
@@ -38,7 +40,7 @@ public class Farmer extends Activity {
         	finish();
         
         // Set up the rating stuff
-        ratingDb = new RatingDbAdapter(this);
+        _ratingDb = new RatingDbAdapter(this);
         _ratingBar = (RatingBar) findViewById(R.id.user_rating);
         
         // Populate the farmer data
@@ -101,11 +103,28 @@ public class Farmer extends Activity {
 		ratingHeader.setText("Rate " + _farmer.getName());
 		TextView productsHeader = (TextView) findViewById(R.id.farmer_products_header_text);
 		productsHeader.setText("Products " + _farmer.getName() + " Sells");
+		
+		// Get the rating data
+		updateAvgRating();
     	
     	if(LoginDbAdapter.getCurrentUser() != null) {
-        	int farmerRating = ratingDb.getRating(_farmer.getUsername(), LoginDbAdapter.getCurrentUser().getUsername());
+        	int farmerRating = _ratingDb.getRating(_farmer.getUsername(), LoginDbAdapter.getCurrentUser().getUsername());
         	_ratingBar.setRating(farmerRating);
         }
+    }
+    
+    private void updateAvgRating() {
+    	if (_avgRatingNum == null)
+    		_avgRatingNum = (TextView) findViewById(R.id.farmer_avg_rating_number);
+    	if (_avgRatingNumUsers == null)
+    		_avgRatingNumUsers = (TextView) findViewById(R.id.farmer_avg_rating_num_users);
+    	if (_avgRatingBar == null)
+    		_avgRatingBar = (RatingBar) findViewById(R.id.farmer_avg_rating);
+    	
+    	float[] ratingInfo = _ratingDb.getAvgRating(_farmer.getUsername());
+    	_avgRatingNumUsers.setText("" + (int)ratingInfo[0]);
+    	_avgRatingNum.setText("" + ratingInfo[1]);
+    	_avgRatingBar.setRating(ratingInfo[1]);
     }
     
     private void saveUserRating() {
@@ -113,8 +132,10 @@ public class Farmer extends Activity {
     	User currentUser = LoginDbAdapter.getCurrentUser();
 
     	// Save it!
-    	ratingDb.open();
-    	ratingDb.addRating(_farmer.getUsername(), (int) _ratingBar.getRating(), currentUser.getUsername());
+    	_ratingDb.open();
+    	_ratingDb.addRating(_farmer.getUsername(), (int) _ratingBar.getRating(), currentUser.getUsername());
+    	
+    	updateAvgRating();
     }
     
     @Override
@@ -125,14 +146,28 @@ public class Farmer extends Activity {
     }
     
     @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+    	MenuItem item = menu.findItem(R.id.log_out);
+    	if (item != null) {
+    		// Is the user logged in?
+    		if (LoginDbAdapter.getCurrentUser() == null)
+    			item.setEnabled(false);
+    		else
+    			item.setEnabled(true);
+    	}
+    	
+    	return true;
+    }
+    
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-            Intent intent = new Intent(Farmer.this, UserMenu.class);
-            intent.putExtra("usertype", UserType.Consumer);
-            startActivityForResult(intent, 0);
+            finish();
             return true;
+        case R.id.log_out:
+        	LoginDbAdapter.logout();
         default:
             return super.onOptionsItemSelected(item);
         }

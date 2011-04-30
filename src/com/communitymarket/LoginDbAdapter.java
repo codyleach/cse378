@@ -17,7 +17,7 @@ public class LoginDbAdapter {
 	public static String PRODUCTS_FIELD = "products";
 	
 	// Variables
-	private LoginDbOpenHelper _dbOpener;
+	private DbOpenHelper _dbOpener;
 	private SQLiteDatabase	  _database;
 	private Context			  _context;
 	
@@ -50,7 +50,7 @@ public class LoginDbAdapter {
 	
 	public void open() {
 		if (_dbOpener == null) {
-			_dbOpener = new LoginDbOpenHelper(_context);
+			_dbOpener = DbOpenHelper.getInstance(_context);
 		}
 		
 		if (_database == null) {
@@ -83,7 +83,7 @@ public class LoginDbAdapter {
 		values.put(PASSWORD_FIELD, user.getPassword());
 		values.put(PRODUCTS_FIELD, user.getProducts());
 		
-		long result = _database.insert(LoginDbOpenHelper.TABLE_NAME, null, values);
+		long result = _database.insert(DbOpenHelper.USERS_TABLE_NAME, null, values);
 		
 		if (result != -1) {
 			user.setPassword("");
@@ -108,7 +108,7 @@ public class LoginDbAdapter {
 			// Query the database
 			String[] fields = { USERNAME_FIELD };
 			String condition = USERNAME_FIELD + "='" + username + "'";
-			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null);
 			
 			// Does it exist?
 			if (cursor == null)
@@ -136,7 +136,7 @@ public class LoginDbAdapter {
 			// Query the database
 			String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
 			String condition = USERNAME_FIELD + "='" + username + "'";
-			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null);
 			
 			// Does it exist?
 			if (cursor == null)
@@ -174,7 +174,7 @@ public class LoginDbAdapter {
 			// Query the database
 			String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
 			String condition = USERNAME_FIELD + "='" + username + "'";
-			Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null);
 			
 			// Does it exist?
 			if (cursor == null)
@@ -213,7 +213,7 @@ public class LoginDbAdapter {
 		// Query the database
 		String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
 		String condition = TYPE_FIELD + "='" + UserType.Producer.toString() + "'";
-		Cursor cursor = _database.query(LoginDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+		Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null);
 		
 		// Does it exist?
 		if (cursor != null) {

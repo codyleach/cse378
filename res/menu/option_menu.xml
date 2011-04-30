@@ -2,6 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:id="@+id/go_home"
 	      android:icon="@drawable/ic_menu_home"
-	      android:title="Go Home"
-	/>
+	      android:title="Go Home"/>
+	<item android:id="@+id/log_out"
+	      android:icon="@drawable/ic_lock_power_off"
+	      android:title="Log Out"/>
 </menu>

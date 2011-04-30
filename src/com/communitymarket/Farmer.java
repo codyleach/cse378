@@ -103,6 +103,8 @@ public class Farmer extends Activity {
 			image.setImageResource(R.drawable.paul_newman);
 		else if (username.equals("bgriffen"))
 			image.setImageResource(R.drawable.barry_griffin);
+		else if (username.equals("jatric"))
+			image.setImageResource(R.drawable.jerry_atric);
 		
 		// Set the header data
 		TextView ratingHeader = (TextView) findViewById(R.id.farmer_rate_header_text);
@@ -129,7 +131,7 @@ public class Farmer extends Activity {
     	
     	float[] ratingInfo = _ratingDb.getAvgRating(_farmer.getUsername());
     	_avgRatingNumUsers.setText("" + (int)ratingInfo[0]);
-    	_avgRatingNum.setText(String.format("%.2g%n", ratingInfo[1]));
+    	_avgRatingNum.setText(String.format("%.2g", ratingInfo[1]));
     	_avgRatingBar.setRating(ratingInfo[1]);
     }
     

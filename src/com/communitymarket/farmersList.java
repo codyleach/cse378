@@ -1,6 +1,9 @@
 package com.communitymarket;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +21,11 @@ import android.widget.TextView;
 import android.view.ViewGroup;
 
 public class farmersList extends Activity {
-	private LayoutInflater _inflater;
+	private LayoutInflater  _inflater;
+	private RatingDbAdapter _ratingDb;
+	private Context 		_context;
+	private ListView		_listView;
+	private TextView		_searchTextView;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -26,24 +33,48 @@ public class farmersList extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmers_list);
         
+        _context  = this.getApplicationContext();
         _inflater = this.getLayoutInflater();
+        _ratingDb = new RatingDbAdapter(this);
+        
+        // Populate the list
+        _searchTextView = (TextView) findViewById(R.id.farmers_search_text);
+        _listView = (ListView) findViewById(R.id.farmers_list_listview);
+        updateListView();
+        
+        _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+				// Get the item
+				User selectedUser = (User) adapterView.getItemAtPosition(position);
+				
+				// Launch the farmer page
+				Intent intent = new Intent(farmersList.this, Farmer.class);
+				intent.putExtra("usertype", UserType.Consumer);
+				intent.putExtra("farmer", selectedUser.getUsername());
+				startActivityForResult(intent, 0);
+			}
+		});
         
         // Search Button
-        Button searchButton = (Button) findViewById(R.id.search_farmers_button);
+        Button searchButton = (Button) findViewById(R.id.farmers_search_button);
         if (searchButton != null) {
         	searchButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    // Perform action on click
-                	Intent intent = new Intent(farmersList.this, Farmer.class);
-    				startActivityForResult(intent, 0);
+                    // Search 'em up
+                	updateListView();
                 }
             });
         }
-        
-        // Populate the list
-        ListView lview = (ListView) findViewById(R.id.farmers_list_listview);
-        lview.setAdapter(new ArrayAdapter<User>(this, R.layout.farmer_list_item, 
-        		LoginDbAdapter.getInstance(this.getApplicationContext()).getFarmerUsers()){
+    }
+    
+    private void updateListView() {
+    	updateListView(LoginDbAdapter.getInstance(_context)
+    			.getFarmerUsers(_searchTextView.getText().toString()));
+    }
+    
+    private void updateListView(ArrayList<User> farmers) {
+    	_listView.setAdapter(new ArrayAdapter<User>(this, 
+    			R.layout.farmer_list_item, farmers){
         	@Override
         	public View getView(int position, View convert, ViewGroup parent) {
         		// Get the farmer
@@ -61,7 +92,9 @@ public class farmersList extends Activity {
         		// Fill in the data
         		name.setText(farmer.getName());
         		products.setText(farmer.getProducts());
-        		ratingBar.setRating(3);
+        		
+        		float[] ratingInfo = _ratingDb.getAvgRating(farmer.getUsername());
+        		ratingBar.setRating(ratingInfo[1]);
         		
         		// Set the image
         		String username = farmer.getUsername();
@@ -73,24 +106,13 @@ public class farmersList extends Activity {
         			image.setImageResource(R.drawable.paul_newman);
         		else if (username.equals("bgriffen"))
         			image.setImageResource(R.drawable.barry_griffin);
+        		else if (username.equals("jatric"))
+        			image.setImageResource(R.drawable.jerry_atric);
         		
         		// Done
         		return newItem;
         	}
         });
-        
-        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-				// Get the item
-				User selectedUser = (User) adapterView.getItemAtPosition(position);
-				
-				// Launch the farmer page
-				Intent intent = new Intent(farmersList.this, Farmer.class);
-				intent.putExtra("usertype", UserType.Consumer);
-				intent.putExtra("farmer", selectedUser.getUsername());
-				startActivityForResult(intent, 0);
-			}
-		});
     }
     
     public void myClickHandler(View v) {
@@ -143,6 +165,8 @@ public class farmersList extends Activity {
 			if (goHome)
 				leave();
 		}
+		
+		updateListView();
     }
     
     private void leave() {

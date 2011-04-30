@@ -204,7 +204,7 @@ public class LoginDbAdapter {
 		return result;
 	}
 	
-	public ArrayList<User> getFarmerUsers() {
+	public ArrayList<User> getFarmerUsers(String searchTerm) {
 		// Make sure we're all set up
 		open();
 		
@@ -212,8 +212,10 @@ public class LoginDbAdapter {
 		
 		// Query the database
 		String[] fields = { TYPE_FIELD, NAME_FIELD, EMAIL_FIELD, USERNAME_FIELD, PASSWORD_FIELD, PRODUCTS_FIELD };
-		String condition = TYPE_FIELD + "='" + UserType.Producer.toString() + "'";
-		Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null);
+		String condition = TYPE_FIELD + "='" + UserType.Producer.toString() + "' AND "
+			+ NAME_FIELD + " LIKE '%" + searchTerm + "%'";
+		Cursor cursor = _database.query(DbOpenHelper.USERS_TABLE_NAME, fields, condition, null, null, null, null,
+				(searchTerm.equals("") ? "5" : null));
 		
 		// Does it exist?
 		if (cursor != null) {
@@ -238,5 +240,9 @@ public class LoginDbAdapter {
 		// Return what was found
 		close();
 		return resultList;
+	}
+	
+	public ArrayList<User> getFarmerUsers() {
+		return getFarmerUsers("");
 	}
 }

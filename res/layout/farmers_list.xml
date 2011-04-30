@@ -27,7 +27,7 @@
 	    	android:layout_height="wrap_content" 
 	    	android:layout_marginRight="10px" 
 	    	android:textColor="#111" 
-	    	android:id="@+id/editText1"
+	    	android:id="@+id/farmers_search_text"
 	    	android:layout_marginLeft="10px"
 	    	android:editable="true" 
 	    	android:hint="Enter Farmer" 
@@ -35,7 +35,7 @@
 	    	android:layout_weight="4">
 	    </EditText>
 		<Button
-			android:id="@+id/search_farmers_button"
+			android:id="@+id/farmers_search_button"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
 			android:layout_marginRight="10px" 
@@ -49,7 +49,6 @@
 			android:layout_marginTop="2dip"
 			android:dividerHeight="5dip"
 			android:divider="@android:color/transparent"
-			android:listSelector="#000"
 			android:cacheColorHint="@android:color/transparent"
 			android:layout_weight="1"
 			android:scrollbarAlwaysDrawVerticalTrack="false"

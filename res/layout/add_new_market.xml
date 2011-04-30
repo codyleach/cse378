@@ -23,6 +23,7 @@
 			android:layout_marginLeft="5dip"
 			android:layout_marginRight="5dip" />	
 		<EditText
+			android:id="@+id/add_new_address"
 			android:layout_gravity="center_horizontal"
 			android:hint="Address"
 			android:layout_width="match_parent" 
@@ -31,13 +32,23 @@
 			android:layout_marginRight="5dip" />
 		<EditText
 			android:layout_gravity="center_horizontal"
-			android:hint="Market Date"
+			android:id="@+id/add_new_start_date"
+			android:hint="Start Date"
 			android:layout_width="match_parent" 
 			android:layout_height="wrap_content" 
 			android:layout_marginLeft="5dip"
 			android:layout_marginRight="5dip" />
 		<EditText
 			android:layout_gravity="center_horizontal"
+			android:id="@+id/add_new_end_date"
+			android:hint="End Date"
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginLeft="5dip"
+			android:layout_marginRight="5dip" />
+		<EditText
+			android:layout_gravity="center_horizontal"
+			android:id="@+id/add_new_start_time"
 			android:hint="Market Start Time"
 			android:layout_width="match_parent" 
 			android:layout_height="wrap_content" 
@@ -45,6 +56,7 @@
 			android:layout_marginRight="5dip" />
 		<EditText
 			android:layout_gravity="center_horizontal"
+			android:id="@+id/add_new_end_time"
 			android:hint="Market End Time"
 			android:layout_width="match_parent" 
 			android:layout_height="wrap_content" 
@@ -52,6 +64,7 @@
 			android:layout_marginRight="5dip" />
 		<EditText
 			android:layout_gravity="center_horizontal"
+			android:id="@+id/add_new_number_stalls"
 			android:hint="Number of Stalls"
 			android:layout_width="match_parent" 
 			android:layout_height="wrap_content" 

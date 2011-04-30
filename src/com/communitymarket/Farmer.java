@@ -73,6 +73,12 @@ public class Farmer extends Activity {
     		} else {
     			saveUserRating();
     		}
+    	} else {
+    		if (intent != null) {
+    			boolean goHome = intent.getBooleanExtra("gohome", false);
+    			if (goHome)
+    				leave();
+    		}
     	}
     }
     
@@ -123,7 +129,7 @@ public class Farmer extends Activity {
     	
     	float[] ratingInfo = _ratingDb.getAvgRating(_farmer.getUsername());
     	_avgRatingNumUsers.setText("" + (int)ratingInfo[0]);
-    	_avgRatingNum.setText("" + ratingInfo[1]);
+    	_avgRatingNum.setText(String.format("%.2g%n", ratingInfo[1]));
     	_avgRatingBar.setRating(ratingInfo[1]);
     }
     
@@ -164,12 +170,20 @@ public class Farmer extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-            finish();
+        	leave();
             return true;
         case R.id.log_out:
         	LoginDbAdapter.logout();
+        	_ratingBar.setRating(0);
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
     }
 }

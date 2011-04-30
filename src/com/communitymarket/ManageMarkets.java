@@ -55,6 +55,9 @@ public class ManageMarkets extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
+        	Intent data = new Intent();
+        	data.putExtra("gohome", true);
+        	setResult(RESULT_OK, data);
             finish();
             return true;
         case R.id.log_out:
@@ -81,6 +84,17 @@ public class ManageMarkets extends Activity {
     				}
     			}
     		}
+    		
+    		if (data.getBooleanExtra("gohome", false)) {
+    			leave();
+    		}
     	}
+    }
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
     }
 }

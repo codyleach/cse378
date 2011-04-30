@@ -61,6 +61,9 @@ public class findMarkets extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
+        	Intent data = new Intent();
+        	data.putExtra("gohome", true);
+        	setResult(RESULT_OK, data);
             finish();
             return true;
         case R.id.log_out:
@@ -68,5 +71,21 @@ public class findMarkets extends Activity {
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (intent != null) {
+			boolean goHome = intent.getBooleanExtra("gohome", false);
+			if (goHome)
+				leave();
+		}
+    }
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
     }
 }

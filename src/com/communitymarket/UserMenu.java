@@ -90,18 +90,33 @@ public class UserMenu extends Activity {
             });
         }
         
-     // Different User Button
+        // Different User Button
         final Button differentUserButton = (Button) findViewById(R.id.different_user_button);
         if (differentUserButton != null) {
         	differentUserButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    // Perform action on click
-                	Intent intent = new Intent(UserMenu.this, home.class);
-    				startActivityForResult(intent, 0);
+                    leave();
                 }
             });
         }
-        
-        
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (intent != null) {
+			// Is the user still logged in?
+			if (LoginDbAdapter.getCurrentUser() == null) {
+				// Coordinator?
+				if (userType == UserType.Coordinator)
+					leave();
+			}
+		}
+    }
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
     }
 }

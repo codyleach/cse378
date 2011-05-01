@@ -57,27 +57,6 @@ public class ManageMarkets extends Activity {
 		});
     }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.option_menu, menu);
-        return true;
-    }
-    
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-    	MenuItem item = menu.findItem(R.id.log_out);
-    	if (item != null) {
-    		// Is the user logged in?
-    		if (LoginDbAdapter.getCurrentUser() == null)
-    			item.setEnabled(false);
-    		else
-    			item.setEnabled(true);
-    	}
-    	
-    	return true;
-    }
-    
     private void updateListView() {
     	updateListView(MarketDbAdapter.getInstance(this.getApplicationContext()).getMarkets());
     }
@@ -107,17 +86,36 @@ public class ManageMarkets extends Activity {
     }
     
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+    	MenuItem item = menu.findItem(R.id.log_out);
+    	if (item != null) {
+    		// Is the user logged in?
+    		if (LoginDbAdapter.getCurrentUser() == null)
+    			item.setEnabled(false);
+    		else
+    			item.setEnabled(true);
+    	}
+    	
+    	return true;
+    }
+    
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-        	Intent data = new Intent();
-        	data.putExtra("gohome", true);
-        	setResult(RESULT_OK, data);
-            finish();
+        	leave();
             return true;
         case R.id.log_out:
         	LoginDbAdapter.logout();
+        	leave();
         default:
             return super.onOptionsItemSelected(item);
         }

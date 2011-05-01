@@ -135,11 +135,11 @@ public class AddNewMarket extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-        	Intent data = new Intent();
-        	data.putExtra("gohome", true);
-        	setResult(RESULT_OK, data);
-            finish();
+        	leave();
             return true;
+        case R.id.log_out:
+        	LoginDbAdapter.logout();
+        	leave();
         default:
             return super.onOptionsItemSelected(item);
         }

@@ -17,12 +17,12 @@ public class LoginDbAdapter {
 	public static String PRODUCTS_FIELD = "products";
 	
 	// Variables
-	private DbOpenHelper _dbOpener;
-	private SQLiteDatabase	  _database;
-	private Context			  _context;
+	private DbOpenHelper 	_dbOpener;
+	private SQLiteDatabase	_database;
+	private Context			_context;
 	
 	// Current user
-	private static User _currentUser;
+	private static User 		  _currentUser;
 	private static LoginDbAdapter _instance;
 	
 	/**

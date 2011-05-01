@@ -27,14 +27,11 @@ public class AddNewMarket extends Activity {
                 public void onClick(View v) {
                 	// Get the new market name
                 	EditText nameEditText = (EditText) findViewById(R.id.add_new_market_name);
-                	String newName = "";
-                	if (nameEditText != null)
-                		newName = nameEditText.getText().toString();
+                	createMarket();
                 	
                     // Perform action on click
                 	Intent intent = new Intent();
                 	intent.putExtra("saved", true);
-                	intent.putExtra("name", newName.trim());
     				setResult(Activity.RESULT_OK, intent);
     				finish();
                 }
@@ -64,7 +61,6 @@ public class AddNewMarket extends Activity {
     	String sStartTime;
     	String sEndTime;
     	String sNumStalls;
-    	String query;
     	
     	EditText name = (EditText) findViewById(R.id.add_new_market_name);
     	sName = name.getText().toString();
@@ -102,12 +98,29 @@ public class AddNewMarket extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-            Intent intent = new Intent(AddNewMarket.this, UserMenu.class);
-            intent.putExtra("usertype", UserType.Consumer);
-            startActivityForResult(intent, 0);
+        	Intent data = new Intent();
+        	data.putExtra("gohome", true);
+        	setResult(RESULT_OK, data);
+            finish();
             return true;
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (intent != null) {
+			boolean goHome = intent.getBooleanExtra("gohome", false);
+			if (goHome)
+				leave();
+		}
+    }
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
     }
 }

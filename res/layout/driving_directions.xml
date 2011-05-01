@@ -12,97 +12,25 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		style="@style/HeaderTextViewStyle"
-		android:text="Driving Directions" />
-  	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/change_origin_button"
-	  	android:text="Change Origin"
-	  	style="@style/MenuButtonItem"
-	  	android:layout_marginTop="10dip"
-	/>
-	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/view_directions_map_button"
-	  	android:text="View Map"
-	  	style="@style/MenuButtonItem"
-	/>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="70px"
-		android:orientation="horizontal"
-		android:layout_marginLeft="10dip"
-		android:layout_marginRight="10dip"
-	>
-		<ImageView
-			android:src="@drawable/up_arrow"
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:padding="10dip"
-			android:layout_marginRight="10dip"
+		android:text="Enter Your Location" />
+  	<EditText
+		android:id="@+id/location_search_box"
+		android:layout_gravity="center_horizontal"
+		android:hint="Enter ZIP or State"
+		android:textColor="#111"
+		android:editable="true"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="10px"
+		android:layout_marginLeft="10px"
+		android:layout_marginRight="10px"
 		/>
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:gravity="center_vertical"
-			android:textColor="#FF405271"
-			android:textSize="22px"
-			android:shadowColor="#6d6d6d"
-			android:shadowDx="1"
-			android:shadowDy="1"
-			android:shadowRadius="1"
-			android:text="West on Claremont"
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:id="@+id/search_location_button"
+		android:text="Search" 
+		android:layout_gravity="center_horizontal"
+		android:layout_marginBottom="130px"
 		/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="70px"
-		android:orientation="horizontal"
-		android:layout_marginLeft="10dip"
-		android:layout_marginRight="10dip"
-	>
-		<ImageView
-			android:src="@drawable/left_arrow"
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:padding="10dip"
-			android:layout_marginRight="10dip"
-		/>
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:gravity="center_vertical"
-			android:textColor="#FF405271"
-			android:textSize="22px"
-			android:shadowColor="#6d6d6d"
-			android:shadowDx="1"
-			android:shadowDy="1"
-			android:shadowRadius="1"
-			android:text="Left on N 10th Street"
-		/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="70px"
-		android:orientation="horizontal"
-		android:layout_marginLeft="10dip"
-		android:layout_marginRight="10dip"
-	>
-		<ImageView
-			android:src="@drawable/right_arrow"
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:padding="10dip"
-			android:layout_marginRight="10dip"
-		/>
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="70px"
-			android:gravity="center_vertical"
-			android:textColor="#FF405271"
-			android:textSize="22px"
-			android:text="Right on P Street"
-			android:shadowColor="#6d6d6d"
-			android:shadowDx="1"
-			android:shadowDy="1"
-			android:shadowRadius="1"
-		/>
-	</LinearLayout>
 </LinearLayout>

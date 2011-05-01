@@ -19,7 +19,7 @@
 			android:id="@+id/farmer_image"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/john_johnston" />
+			android:src="@drawable/ic_contact_picture" />
 		<LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
@@ -36,13 +36,38 @@
 					android:shadowDy="1"
 					android:shadowRadius="1"
 					android:text="Liz Lemon" />
-				<TextView
-					android:id="@+id/farmer_avg_rating_text"
-					android:layout_width="wrap_content"
+				<LinearLayout
+					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:textColor="#FF405270"
-					android:textSize="18px"
-					android:text="4.2 Avg. Rating (37 users)" />
+					android:orientation="horizontal"
+					android:layout_margin="0dip">
+					<TextView
+						android:id="@+id/farmer_avg_rating_number"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="18px"
+						android:text="0.0" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="18px"
+						android:text=" Avg. Rating (" />
+					<TextView
+						android:id="@+id/farmer_avg_rating_num_users"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="18px"
+						android:text="0" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="#FF405270"
+						android:textSize="18px"
+						android:text=" users)" />
+				</LinearLayout>
 				<RatingBar
 					android:id="@+id/farmer_avg_rating"
 					android:layout_width="wrap_content"

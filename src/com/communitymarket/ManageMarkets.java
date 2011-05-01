@@ -1,6 +1,9 @@
 package com.communitymarket;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +22,8 @@ import android.widget.TextView;
 
 public class ManageMarkets extends Activity {
 	private LayoutInflater _inflater;
+	private Context 		_context;
+	private ListView		_listView;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,31 +45,32 @@ public class ManageMarkets extends Activity {
         }
         
         // Populate the list
-        ListView lview = (ListView) findViewById(R.id.manage_markets_listview);
-        lview.setAdapter(new ArrayAdapter<Market>(this, R.layout.manage_markets_item, 
-        		MarketDbAdapter.getInstance(this.getApplicationContext()).getMarkets()){
-        	@Override
-        	public View getView(int position, View convert, ViewGroup parent) {
-        		// Get the farmer
-        		Market currentMarket = getItem(position);
-        		
-        		// Create the item
-        		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
-        		
-        		// Get all of the item elements
-        		com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
-        		
-        		// Fill in the data
-        		button.setText(currentMarket.getName());
-        		
-        		
-        		
-        		// Done
-        		return newItem;
-        	}
-        });
+        _listView = (ListView) findViewById(R.id.manage_markets_listview);
+//        lview.setAdapter(new ArrayAdapter<Market>(this, R.layout.manage_markets_item){
+//        	@Override
+//        	public View getView(int position, View convert, ViewGroup parent) {
+//        		// Get the farmer
+//        		Market currentMarket = getItem(position);
+//        		
+//        		// Create the item
+//        		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
+//        		
+//        		// Get all of the item elements
+//        		com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
+//        		
+//        		// Fill in the data
+//        		button.setText(currentMarket.getName());
+//        		
+//        		
+//        		
+//        		// Done
+//        		return newItem;
+//        	}
+//        });
         
-        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        updateListView();
+        
+        _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 				// Get the item
 				Market selectedMarket = (Market) adapterView.getItemAtPosition(position);
@@ -78,30 +84,7 @@ public class ManageMarkets extends Activity {
 		});
         
         
-        /*
-         *  // Populate the list
-        ListView lview = (ListView) findViewById(R.id.manage_markets_listview);
-        lview.setAdapter(new ArrayAdapter<User>(this, R.layout.manage_markets_item, 
-        		LoginDbAdapter.getInstance(this.getApplicationContext()).getFarmerUsers()){
-        	@Override
-        	public View getView(int position, View convert, ViewGroup parent) {
-        		// Get the farmer
-        		User farmer = getItem(position);
-        		
-        		// Create the item
-        		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
-        		
-        		// Get all of the item elements
-        		TextView name = (TextView) newItem.findViewById(R.id.manage_markets_button);
-        		
-        		// Fill in the data
-        		name.setText(farmer.getName());
-        		
-        		// Done
-        		return newItem;
-        	}
-        });
-         */
+      
     }
     
     @Override
@@ -112,36 +95,81 @@ public class ManageMarkets extends Activity {
     }
     
     @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+    	MenuItem item = menu.findItem(R.id.log_out);
+    	if (item != null) {
+    		// Is the user logged in?
+    		if (LoginDbAdapter.getCurrentUser() == null)
+    			item.setEnabled(false);
+    		else
+    			item.setEnabled(true);
+    	}
+    	
+    	return true;
+    }
+    
+    private void updateListView() {
+    	updateListView(MarketDbAdapter.getInstance(this.getApplicationContext()).getMarkets());
+    }
+    
+    private void updateListView(ArrayList<Market> markets) {
+    	_listView.setAdapter(new ArrayAdapter<Market>(this, 
+    			R.layout.manage_markets_item, markets){
+        	@Override
+        	public View getView(int position, View convert, ViewGroup parent) {
+        		// Get the farmer
+        		Market market = getItem(position);
+        		
+        		// Create the item
+        		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
+        		
+        		// Get all of the item elements
+        		com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
+        		
+        		// Fill in the data
+        		button.setText(market.getName());
+        		
+        		// Done
+        		return newItem;
+        	}
+        });
+    }
+    
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.go_home:
-            Intent intent = new Intent(ManageMarkets.this, UserMenu.class);
-            intent.putExtra("usertype", UserType.Consumer);
-            startActivityForResult(intent, 0);
+        	Intent data = new Intent();
+        	data.putExtra("gohome", true);
+        	setResult(RESULT_OK, data);
+            finish();
             return true;
+        case R.id.log_out:
+        	LoginDbAdapter.logout();
         default:
             return super.onOptionsItemSelected(item);
         }
     }
     
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//    	super.onActivityResult(requestCode, resultCode, data);
-//    	if (resultCode == Activity.RESULT_OK) {
-//    		if (data.getBooleanExtra("saved", false)) {
-//    			// Get the new market name
-//    			String newName = data.getStringExtra("name");
-//    			
-//    			if (!newName.trim().equals("")) {
-//    				// Get the new button
-//    				Button newButton = (Button) findViewById(R.id.recently_added_button);
-//    				if (newButton != null) {
-//    					newButton.setText(newName);
-//    					newButton.setVisibility(View.VISIBLE);
-//    				}
-//    			}
-//    		}
-//    	}
-//    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	super.onActivityResult(requestCode, resultCode, data);
+    	if (data != null ) {
+    		
+    		if (data.getBooleanExtra("gohome", false)) {
+    			leave();
+    		}
+    	}
+    		updateListView();
+    	}
+    
+    
+    private void leave() {
+    	Intent data = new Intent();
+    	data.putExtra("gohome", true);
+    	setResult(RESULT_OK, data);
+        finish();
+    }
 }

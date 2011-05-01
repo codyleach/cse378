@@ -9,16 +9,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddNewMarket extends Activity {
 	private MarketDbAdapter marketDB;
 	private Market _market;
+	private int _marketId = -1;
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_new_market);
+        marketDB = new MarketDbAdapter(this.getApplicationContext());
+        
+        // Is this an edit or an add?
+        if (getIntent().getExtras() != null) {
+	        _marketId = getIntent().getExtras().getInt("market", -1);
+	        if (_marketId >= 0) {
+	        	_market = marketDB.getMarket(_marketId);
+	        	fillData();
+	        }
+        }
         
         // Save Button
         final Button saveButton = (Button) findViewById(R.id.add_new_market_save_button);
@@ -27,7 +39,8 @@ public class AddNewMarket extends Activity {
                 public void onClick(View v) {
                 	// Get the new market name
                 	EditText nameEditText = (EditText) findViewById(R.id.add_new_market_name);
-                	createMarket();
+                	if (!nameEditText.getText().toString().equals(""))
+                		saveMarket();
                 	
                     // Perform action on click
                 	Intent intent = new Intent();
@@ -53,37 +66,61 @@ public class AddNewMarket extends Activity {
         }
     }
     
-    private void createMarket() {
-    	String sName;
-    	String sAddress;
-    	String sStartDate;
-    	String sEndDate;
-    	String sStartTime;
-    	String sEndTime;
-    	String sNumStalls;
+    private void fillData() {
+    	// Change the title
+    	TextView title = (TextView) findViewById(R.id.add_new_market_title);
+    	title.setText("Update Market");
     	
     	EditText name = (EditText) findViewById(R.id.add_new_market_name);
-    	sName = name.getText().toString();
+    	name.setText(_market.getName());
     	
     	EditText address = (EditText) findViewById(R.id.add_new_address);
-    	sAddress = address.getText().toString();
+    	address.setText(_market.getAddress());
     	
     	EditText startDate = (EditText) findViewById(R.id.add_new_start_date);
-    	sStartDate = startDate.getText().toString();
+    	startDate.setText(_market.getStartDate());
     	
     	EditText endDate = (EditText) findViewById(R.id.add_new_end_date);
-    	sEndDate = endDate.getText().toString();
+    	endDate.setText(_market.getEndDate());
     	
     	EditText startTime = (EditText) findViewById(R.id.add_new_start_time);
-    	sStartTime = startTime.getText().toString();
+    	startTime.setText(_market.getStartTime());
     	
     	EditText endTime = (EditText) findViewById(R.id.add_new_end_time);
-    	sEndTime = endTime.getText().toString();
+    	endTime.setText(_market.getEndTime());
     	
     	EditText numStalls = (EditText) findViewById(R.id.add_new_number_stalls);
-    	sNumStalls = numStalls.getText().toString();
+    	numStalls.setText(_market.getNumberOfStalls() + "");
+    }
+    
+    private void saveMarket() {
+    	Market newMarket = new Market();
     	
-    	marketDB.addMarket(sName, sAddress, sStartDate, sEndDate, sStartTime, sEndTime, sNumStalls);
+    	if (_marketId >= 0)
+    		newMarket.setMarketID(_marketId);
+    	
+    	EditText name = (EditText) findViewById(R.id.add_new_market_name);
+    	newMarket.setName(name.getText().toString());
+    	
+    	EditText address = (EditText) findViewById(R.id.add_new_address);
+    	newMarket.setAddress(address.getText().toString());
+    	
+    	EditText startDate = (EditText) findViewById(R.id.add_new_start_date);
+    	newMarket.setStartDate(startDate.getText().toString());
+    	
+    	EditText endDate = (EditText) findViewById(R.id.add_new_end_date);
+    	newMarket.setEndDate(endDate.getText().toString());
+    	
+    	EditText startTime = (EditText) findViewById(R.id.add_new_start_time);
+    	newMarket.setStartTime(startTime.getText().toString());
+    	
+    	EditText endTime = (EditText) findViewById(R.id.add_new_end_time);
+    	newMarket.setEndTime(endTime.getText().toString());
+    	
+    	EditText numStalls = (EditText) findViewById(R.id.add_new_number_stalls);
+    	newMarket.setNumberOfStalls(Integer.parseInt(numStalls.getText().toString()));
+    	
+    	marketDB.addMarket(newMarket);
     }
     
     @Override

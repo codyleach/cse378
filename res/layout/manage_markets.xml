@@ -18,14 +18,13 @@
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
 		android:layout_marginTop="2dip"
-		android:dividerHeight="5dip"
-		android:divider="@android:color/transparent"
-		android:listSelector="#000"
+		android:dividerHeight="1dip"
+		android:divider="#FF909090"
 		android:cacheColorHint="@android:color/transparent"
 		android:layout_weight="1"
 		android:scrollbarAlwaysDrawVerticalTrack="false"
 		android:scrollbarFadeDuration="2000" /> 
-	<Button
+	<com.communitymarket.MenuButtonItem
 		android:id="@+id/manage_add_new_button"
 		android:text="Add New Market"
 		android:layout_height="wrap_content"

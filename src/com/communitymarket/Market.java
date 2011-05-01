@@ -1,14 +1,14 @@
 package com.communitymarket;
 
 public class Market {
-	private String 	 _name;
-	private String 	 _address;
-	private String	 _endDate;
-	private String 	 _startDate;
-	private String	 _startTime;
-	private String	 _endTime;
-	private int	 _numberOfStalls;
-	private int	 _marketID;
+	private String 	_name;
+	private String 	_address;
+	private String	_endDate;
+	private String 	_startDate;
+	private String	_startTime;
+	private String	_endTime;
+	private int	 	_numberOfStalls;
+	private int	 	_marketID;
 	
 	public Market() {
 		this ("", "", "", "", "", "", 0);

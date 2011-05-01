@@ -3,7 +3,6 @@ package com.communitymarket;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,14 +14,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class ManageMarkets extends Activity {
-	private LayoutInflater _inflater;
-	private Context 		_context;
+	private LayoutInflater 	_inflater;
 	private ListView		_listView;
 	/** Called when the activity is first created. */
     @Override
@@ -46,28 +42,6 @@ public class ManageMarkets extends Activity {
         
         // Populate the list
         _listView = (ListView) findViewById(R.id.manage_markets_listview);
-//        lview.setAdapter(new ArrayAdapter<Market>(this, R.layout.manage_markets_item){
-//        	@Override
-//        	public View getView(int position, View convert, ViewGroup parent) {
-//        		// Get the farmer
-//        		Market currentMarket = getItem(position);
-//        		
-//        		// Create the item
-//        		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
-//        		
-//        		// Get all of the item elements
-//        		com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
-//        		
-//        		// Fill in the data
-//        		button.setText(currentMarket.getName());
-//        		
-//        		
-//        		
-//        		// Done
-//        		return newItem;
-//        	}
-//        });
-        
         updateListView();
         
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,15 +50,11 @@ public class ManageMarkets extends Activity {
 				Market selectedMarket = (Market) adapterView.getItemAtPosition(position);
 				
 				// Launch the farmer page
-				Intent intent = new Intent(ManageMarkets.this, Market.class);
-				intent.putExtra("usertype", UserType.Consumer);
+				Intent intent = new Intent(ManageMarkets.this, AddNewMarket.class);
 				intent.putExtra("market", selectedMarket.getMarketID());
 				startActivityForResult(intent, 0);
 			}
 		});
-        
-        
-      
     }
     
     @Override
@@ -124,10 +94,11 @@ public class ManageMarkets extends Activity {
         		View newItem = _inflater.inflate(R.layout.manage_markets_item, null);
         		
         		// Get all of the item elements
-        		com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
-        		
-        		// Fill in the data
-        		button.setText(market.getName());
+        		//com.communitymarket.MenuButtonItem button = (com.communitymarket.MenuButtonItem) newItem.findViewById(R.id.manage_markets_button);
+        		TextView nameText = (TextView) newItem.findViewById(R.id.manage_markets_item_name);
+        		nameText.setText(market.getName());
+        		TextView addressText = (TextView) newItem.findViewById(R.id.manage_markets_item_address);
+        		addressText.setText(market.getAddress());
         		
         		// Done
         		return newItem;
@@ -157,13 +128,12 @@ public class ManageMarkets extends Activity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
     	super.onActivityResult(requestCode, resultCode, data);
     	if (data != null ) {
-    		
     		if (data.getBooleanExtra("gohome", false)) {
     			leave();
     		}
     	}
-    		updateListView();
-    	}
+    	updateListView();
+	}
     
     
     private void leave() {

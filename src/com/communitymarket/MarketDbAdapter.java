@@ -19,13 +19,12 @@ public class MarketDbAdapter {
 	public static String NUM_STALLS_FIELD = "numberOfStalls";
 	public static String MARKET_ID_FIELD = "marketID";
 	
-	private static Market _currentMarket;
 	private static MarketDbAdapter _instance;
 	
 	// Variables
-	private MarketDbOpenHelper _dbOpener;
-	private SQLiteDatabase	  _database;
-	private Context			  _context;
+	private DbOpenHelper 	_dbOpener;
+	private SQLiteDatabase	_database;
+	private Context			_context;
 	
 	/**
 	 * Constructor
@@ -44,7 +43,7 @@ public class MarketDbAdapter {
 	
 	public void open() throws SQLException {
 		if (_dbOpener == null) {
-			_dbOpener = new MarketDbOpenHelper(_context);
+			_dbOpener = DbOpenHelper.getInstance(_context);
 		}
 		
 		if (_database == null) {
@@ -59,31 +58,6 @@ public class MarketDbAdapter {
 		}
 	}
 	
-//	public boolean addMarket(String name, String address, String startDate, String endDate, 
-//			String startTime, String endTime, int numStalls) {
-//		// Make sure we're all set up
-//		open();
-//		
-//		// Make sure the inputs aren't null
-//		if (name.equals("") || address.equals("") || startDate.equals("") 
-//				|| endDate.equals("") || startTime.equals("") || endTime.equals("")) {
-//			return false;
-//		}
-//		
-//		ContentValues values = new ContentValues();
-//		values.put(MARKET_NAME_FIELD, name);
-//		values.put(ADDRESS_FIELD, address);
-//		values.put(START_DATE_FIELD, startDate);
-//		values.put(END_DATE_FIELD, endDate);
-//		values.put(START_TIME_FIELD, startTime);
-//		values.put(END_TIME_FIELD, endTime);
-//		values.put(NUM_STALLS_FIELD, numStalls);
-//		_database.insert(RatingDbOpenHelper.TABLE_NAME, null, values);
-//		
-//		close();
-//		return true;
-//	}
-	
 	public boolean updateMarket(String query) {
 		open();
 		if (query.equals(""))
@@ -94,208 +68,47 @@ public class MarketDbAdapter {
 		
 	}
 	
-	public boolean addMarket(String sName, String sAddress, String sStartDate, String sEndDate, 
-	String sStartTime, String sEndTime, String sNumStalls) {
+	public boolean addMarket(Market market) {
 		open();
-		if (sName.equals("") || sAddress.equals("") || sStartDate.equals("")
-				|| sEndDate.equals("") || sStartTime.equals("") || sEndTime.equals("")
-				|| sNumStalls.equals(""))
+		if (market.getName().equals("") 
+				|| market.getAddress().equals("") 
+				|| market.getStartDate().equals("")
+				|| market.getEndDate().equals("") 
+				|| market.getStartTime().equals("") 
+				|| market.getEndTime().equals(""))
 			return false;
 		
 		ContentValues values = new ContentValues();
-		values.put(MarketDbAdapter.MARKET_NAME_FIELD, sName);
-		values.put(MarketDbAdapter.ADDRESS_FIELD, sAddress);
-		values.put(MarketDbAdapter.START_DATE_FIELD, sStartDate);
-		values.put(MarketDbAdapter.END_DATE_FIELD, sEndDate);
-		values.put(MarketDbAdapter.START_TIME_FIELD, sStartTime);
-		values.put(MarketDbAdapter.END_TIME_FIELD, sEndTime);
-		values.put(MarketDbAdapter.NUM_STALLS_FIELD, sNumStalls);
-        _database.insert(MarketDbOpenHelper.TABLE_NAME, null, values);
+		values.put(MARKET_NAME_FIELD, market.getName());
+		values.put(ADDRESS_FIELD, market.getAddress());
+		values.put(START_DATE_FIELD, market.getStartDate());
+		values.put(END_DATE_FIELD, market.getEndDate());
+		values.put(START_TIME_FIELD, market.getStartTime());
+		values.put(END_TIME_FIELD, market.getEndTime());
+		values.put(NUM_STALLS_FIELD, market.getNumberOfStalls());
+		
+		// Does this market already exist?
+		if (doesExist(market.getMarketID())) {
+			String condition = MARKET_ID_FIELD + "='" + market.getMarketID() + "'";
+			_database.update(DbOpenHelper.MARKETS_TABLE_NAME, values, 
+					condition, null);
+		} else {
+	        _database.insert(DbOpenHelper.MARKETS_TABLE_NAME, null, values);
+		}
 		close();
 		return true;
 	}
 	
 	public boolean doesExist(int marketID) {	//returns true if does exist
 		open();
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-		+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
+		String query = "SELECT * FROM " + DbOpenHelper.MARKETS_TABLE_NAME 
+		+ " WHERE " + MARKET_ID_FIELD + " = '" + marketID + "'";
 	
 		Cursor cursor = _database.rawQuery(query, null);
 		
 		if (cursor.getCount() == 0)		//if there are no matches, return negative
 			return false;
 		return true;
-	}
-	
-	public String getName(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(MARKET_NAME_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getAddress(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(ADDRESS_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getStartDate(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(START_DATE_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getEndDate(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(END_DATE_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getStartTime(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(START_TIME_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getEndTime(int marketID) {	//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(END_TIME_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
-	}
-	
-	public String getNumberOfStalls(int marketID) {		//returns "fuck" if can't find market
-		if (!doesExist(marketID))
-			return "fuck";
-		
-		// Make sure we're all set up
-		open();
-		
-		String query = "SELECT * FROM " + MarketDbOpenHelper.TABLE_NAME 
-			+ " WHERE " + MARKET_ID_FIELD + "' = '" + marketID + "'";
-		
-		Cursor cursor = _database.rawQuery(query, null);
-		
-		if (cursor.getCount() == 0) {	//if there are no matches, return negative
-			return "fuck";
-		}
-		
-		//make sure at first
-		cursor.moveToFirst();
-		String result = cursor.getString(cursor.getColumnIndex(NUM_STALLS_FIELD));
-		
-		//Always close the database.
-		close();
-		return result;
 	}
 	
 	public Market getMarket(int marketID) {
@@ -312,7 +125,7 @@ public class MarketDbAdapter {
 			String[] fields = { MARKET_NAME_FIELD, ADDRESS_FIELD, START_DATE_FIELD, END_DATE_FIELD,
 					START_TIME_FIELD, END_TIME_FIELD, NUM_STALLS_FIELD, MARKET_ID_FIELD };
 			String condition = MARKET_ID_FIELD + "='" + marketID + "'";
-			Cursor cursor = _database.query(MarketDbOpenHelper.TABLE_NAME, fields, condition, null, null, null, null);
+			Cursor cursor = _database.query(DbOpenHelper.MARKETS_TABLE_NAME, fields, condition, null, null, null, null);
 			
 			// Does it exist?
 			if (cursor == null)
@@ -350,7 +163,7 @@ public class MarketDbAdapter {
 		//String[] fields = { MARKET_NAME_FIELD, ADDRESS_FIELD, START_DATE_FIELD, END_DATE_FIELD,
 			//	START_TIME_FIELD, END_TIME_FIELD, NUM_STALLS_FIELD, MARKET_ID_FIELD };
 		//String condition = TYPE_FIELD + "='" + UserType.Producer.toString() + "'";
-		String query = "SELECT * FROM '" + MarketDbOpenHelper.TABLE_NAME + "'";
+		String query = "SELECT * FROM '" + DbOpenHelper.MARKETS_TABLE_NAME + "'";
 		Cursor cursor = _database.rawQuery(query, null);
 		
 		// Does it exist?

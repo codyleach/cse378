@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbOpenHelper extends SQLiteOpenHelper {
-	private static final int 	DB_VERSION 	 = 3;
+	private static final int 	DB_VERSION 	 = 2;
 	private static final String DB_NAME		 = "communitymarket";
     public  static final String USERS_TABLE_NAME 	 = "users";
     private static final String USERS_TABLE_CREATE = "CREATE TABLE " + USERS_TABLE_NAME 
@@ -16,11 +16,23 @@ public class DbOpenHelper extends SQLiteOpenHelper {
                 + LoginDbAdapter.USERNAME_FIELD + " TEXT, "
                 + LoginDbAdapter.PASSWORD_FIELD + " TEXT, "
                 + LoginDbAdapter.PRODUCTS_FIELD + " TEXT);";
+    
     public  static final String RATINGS_TABLE_NAME 	 = "ratings";
     private static final String RATINGS_TABLE_CREATE = "CREATE TABLE " + RATINGS_TABLE_NAME 
                 + " (" + RatingDbAdapter.USERNAME_FIELD + " TEXT, "
                 + RatingDbAdapter.RATING_FIELD + " INT, "
                 + RatingDbAdapter.FARMER_ID_FIELD + " TEXT);";
+    
+    public  static final String MARKETS_TABLE_NAME 	 = "markets";
+    private static final String MARKETS_TABLE_CREATE = "CREATE TABLE " + MARKETS_TABLE_NAME 
+                + " (" + MarketDbAdapter.MARKET_NAME_FIELD + " TEXT, "
+                + MarketDbAdapter.ADDRESS_FIELD + " TEXT, "
+                + MarketDbAdapter.START_DATE_FIELD + " TEXT, "
+                + MarketDbAdapter.END_DATE_FIELD + " TEXT, "
+                + MarketDbAdapter.START_TIME_FIELD + " TEXT, "
+                + MarketDbAdapter.END_TIME_FIELD + " TEXT, "
+                + MarketDbAdapter.MARKET_ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + MarketDbAdapter.NUM_STALLS_FIELD + " INTEGER);";
     
     private static DbOpenHelper _instance;
     
@@ -39,8 +51,9 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(USERS_TABLE_CREATE);
         db.execSQL(RATINGS_TABLE_CREATE);
+        db.execSQL(MARKETS_TABLE_CREATE);
         
-        // Create some fake users
+        // Create some fake farmers
         ContentValues values = new ContentValues();
 		values.put(LoginDbAdapter.TYPE_FIELD, UserType.Producer.toString());
 		values.put(LoginDbAdapter.NAME_FIELD, "John Johnston");
@@ -104,6 +117,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 		values.put(LoginDbAdapter.PRODUCTS_FIELD, "Squash, Cucumber, Red Onions");
         db.insert(USERS_TABLE_NAME, null, values);
         
+        // Create some fake users
         values.clear();
 		values.put(LoginDbAdapter.TYPE_FIELD, UserType.Coordinator.toString());
 		values.put(LoginDbAdapter.NAME_FIELD, "Cody Leach");
@@ -127,12 +141,23 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 		values.put(LoginDbAdapter.USERNAME_FIELD, "Daniel");
 		values.put(LoginDbAdapter.PASSWORD_FIELD, "Daniel");
         db.insert(USERS_TABLE_NAME, null, values);
+        
+        // Create some fake markets
+        values.clear();
+		values.put(MarketDbAdapter.MARKET_NAME_FIELD, "Lincoln Haymarket");
+		values.put(MarketDbAdapter.START_DATE_FIELD, "May 7");
+		values.put(MarketDbAdapter.END_DATE_FIELD, "October 15");
+		values.put(MarketDbAdapter.START_TIME_FIELD, "8:00 AM");
+		values.put(MarketDbAdapter.END_TIME_FIELD, "12:00 PM");
+		values.put(MarketDbAdapter.ADDRESS_FIELD, "8th and P Street, Lincoln, NE, 68508");
+        db.insert(MARKETS_TABLE_NAME, null, values);
     }
     
     @Override
     public void onUpgrade(SQLiteDatabase db, int v1, int v2) {
     	db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE_NAME);
     	db.execSQL("DROP TABLE IF EXISTS " + RATINGS_TABLE_NAME);
+    	db.execSQL("DROP TABLE IF EXISTS " + MARKETS_TABLE_NAME);
         onCreate(db);
     }
 }

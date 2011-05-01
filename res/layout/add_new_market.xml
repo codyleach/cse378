@@ -9,83 +9,128 @@
 		  	android:layout_height="wrap_content"
 		  	android:layout_width="fill_parent"
 		  	android:layout_marginBottom="15dip" />
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			style="@style/HeaderTextViewStyle"
-			android:text="Add A New Market" />
-		<EditText
-			android:id="@+id/add_new_market_name"
-			android:layout_gravity="center_horizontal"
-			android:hint="Name"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />	
-		<EditText
-			android:id="@+id/add_new_address"
-			android:layout_gravity="center_horizontal"
-			android:hint="Address"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<EditText
-			android:layout_gravity="center_horizontal"
-			android:id="@+id/add_new_start_date"
-			android:hint="Start Date"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<EditText
-			android:layout_gravity="center_horizontal"
-			android:id="@+id/add_new_end_date"
-			android:hint="End Date"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<EditText
-			android:layout_gravity="center_horizontal"
-			android:id="@+id/add_new_start_time"
-			android:hint="Market Start Time"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<EditText
-			android:layout_gravity="center_horizontal"
-			android:id="@+id/add_new_end_time"
-			android:hint="Market End Time"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<EditText
-			android:layout_gravity="center_horizontal"
-			android:id="@+id/add_new_number_stalls"
-			android:hint="Number of Stalls"
-			android:layout_width="match_parent" 
-			android:layout_height="wrap_content" 
-			android:layout_marginLeft="5dip"
-			android:layout_marginRight="5dip" />
-		<LinearLayout
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_marginLeft="10px"
-			android:layout_gravity="left">
-			<Button
-				 android:id="@+id/add_new_market_save_button" 
-				 android:layout_height="wrap_content" 
-				 android:layout_width="125dip" 
-				 android:text="Save" />
-			<Button 
-				android:layout_height="wrap_content"
-			 	android:id="@+id/add_new_market_cancel_button"
-			 	android:layout_width="125dip" 
-			 	android:text="Cancel"
-			 	android:layout_marginLeft="5dip" />
-	</LinearLayout>
+		<ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<LinearLayout
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					style="@style/HeaderTextViewStyle"
+					android:text="Add A New Market"
+					android:id="@+id/add_new_market_title" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="Name" />
+				<EditText
+					android:id="@+id/add_new_market_name"
+					android:layout_gravity="center_horizontal"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="Address" />
+				<EditText
+					android:id="@+id/add_new_address"
+					android:layout_gravity="center_horizontal"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="Start Date" />
+				<EditText
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/add_new_start_date"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="End Date" />
+				<EditText
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/add_new_end_date"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="Start Time" />
+				<EditText
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/add_new_start_time"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="End Time" />
+				<EditText
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/add_new_end_time"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<TextView 
+			       	android:layout_height="wrap_content"
+			       	android:textColor="#FF405270"
+			       	android:layout_width="wrap_content"
+			       	android:layout_marginLeft="10dip"
+			       	android:text="Number of Stalls" />
+				<EditText
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/add_new_number_stalls"
+					android:layout_width="match_parent" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="5dip"
+					android:layout_marginRight="5dip" />
+				<LinearLayout
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					android:layout_marginLeft="10px"
+					android:layout_gravity="center">
+					<Button
+						 android:id="@+id/add_new_market_save_button" 
+						 android:layout_height="wrap_content" 
+						 android:layout_width="125dip" 
+						 android:text="Save" />
+					<Button 
+						android:layout_height="wrap_content"
+					 	android:id="@+id/add_new_market_cancel_button"
+					 	android:layout_width="125dip" 
+					 	android:text="Cancel"
+					 	android:layout_marginLeft="5dip" />
+				</LinearLayout>
+			</LinearLayout>
+		</ScrollView>
 </LinearLayout>

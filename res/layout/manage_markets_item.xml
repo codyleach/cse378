@@ -4,9 +4,23 @@
   android:layout_width="fill_parent"
   android:layout_height="wrap_content"
   android:orientation="vertical">
-	<com.communitymarket.MenuButtonItem
-	  	android:id="@+id/manage_markets_button"
-	  	android:text="Lincoln Haymarket"
-	  	style="@style/MenuButtonItem" 
-	  	android:layout_marginTop="10dip"/>
+	<TextView 
+       	android:layout_height="wrap_content" 
+       	android:id="@+id/manage_markets_item_name"
+       	android:gravity="center_vertical" 
+       	android:text="Lincoln Haymarket" 
+       	android:textColor="#FFF"
+       	android:layout_weight="1"
+       	android:layout_width="fill_parent"
+       	android:textSize="18dip"
+       	android:layout_marginLeft="5dip" />
+    <TextView 
+       	android:layout_height="wrap_content" 
+       	android:id="@+id/manage_markets_item_address"
+       	android:gravity="center_vertical"
+       	android:textColor="#FF405270"
+       	android:layout_weight="1"
+       	android:layout_width="fill_parent"
+       	android:layout_marginBottom="10dip"
+       	android:layout_marginLeft="5dip" />
 </LinearLayout>
